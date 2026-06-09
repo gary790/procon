@@ -1,0 +1,17 @@
+# Cloudflare Pages security headers (Bible 5.10 / Phase 8 ISO)
+# Everything is self-hosted — no third-party script/font/style origins required.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(self), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'
+
+# Long-cache immutable static assets (fonts, css, js, images)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# NOTE: style-src keeps 'unsafe-inline' only for inline style="" attributes used in layout.
+# A later hardening pass can move those into site.css and drop the allowance entirely.

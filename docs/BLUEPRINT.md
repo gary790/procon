@@ -129,40 +129,39 @@ Thin/overlapping spokes may be merged to satisfy the Bible's no-thin-page rule.
 
 ## PHASE 3 — Brand & Visual System (design tokens)
 
-**Typography (justified pick):** Heading **Fraunces** (variable soft-serif) + Body **Inter**.
-*Why:* Fraunces reads as hand-built craft and permanence — matches "homes that last through
-winters" and separates Pro Con from the interchangeable Oswald/Bebas contractor sites, while Inter
-keeps body copy clean and legible. Max 2 families · `font-display: swap` · preload Fraunces woff2.
+> **Creative direction: "North Shore Monolith"** — architectural, cinematic, minimal-masculine.
+> Quality bar is FLAGSHIP (see memory `flagship-quality-bar`): bespoke, self-hosted, motion-rich,
+> **no generic fonts or stock symbols**. Hand-authored CSS (`assets/css/site.css`), no Tailwind in prod.
 
-**Color tokens** (derived from vibe *Trustworthy / Experienced / Local*; warm wood accent nods to
-the Arbor Wood decking; all pairings will be contrast-verified to WCAG 2.2 AA before shipping):
+**Typography (self-hosted, non-generic):** Display **Clash Display** (500/600/700) + Text **Switzer**
+(400/500/600/700) — Fontshare foundry faces, self-hosted as WOFF2 (no Google/CDN). *Why:* Clash Display
+is heavyweight and architectural for monolithic headlines; Switzer is a clean neutral grotesk for text.
+Preload Clash 600 + Switzer 400. *(Earlier Fraunces+Inter pick was rejected as generic.)*
+
+**Color tokens** (North Shore Monolith — iron / paper / timber, with one cold Lake-Superior accent):
 
 | Role | Hex | Use |
 |---|---|---|
-| Primary (ink/slate) | `#1F2A33` | text, dark sections, header |
-| Secondary (steel) | `#3E5160` | supporting headings, borders |
-| **Accent / CTA** | `#A85F1A` | **primary CTAs + 1–2 highlights only** (white text ≈ 4.6:1) |
-| Accent hover | `#C77D33` | CTA hover, small highlights |
-| Neutral 50 | `#FAF8F5` | warm page background |
-| Neutral 100 | `#F3EFE9` | cards / alt sections |
-| Neutral 200 | `#E5DED4` | dividers |
-| Neutral 400 | `#B9AE9E` | muted text |
-| Neutral 600 | `#6F665A` | secondary body |
-| Neutral 800 | `#3A352E` | strong body on light |
-| Neutral 950 | `#1C1A16` | deepest |
-| success / warning / danger / info | `#2E7D54` / `#C2701C` / `#B3261E` / `#2D5A88` | form states only |
+| Iron (primary dark) | `#13171A` | hero + dark sections, ink text on paper |
+| Iron-2 / Iron-3 | `#1B2126` / `#272E34` | lifted dark surfaces |
+| Paper (primary light) | `#F3F0E9` | page background, text on iron |
+| Paper-2 | `#E8E2D6` | alt light surface |
+| Ink-soft | `#585C5C` | muted body on paper |
+| Mist | `rgba(243,240,233,.64)` | muted text on iron |
+| **Timber (warm accent)** | `#B07A37` | eyebrows, hairlines, brand mark, CTA dot — used like punctuation |
+| **Superior (cold accent)** | `#8FB7C8` | rare pop: contour lines, focus ring, diff numerals |
+| Lines | `rgba(19,23,26,.14)` / `rgba(243,240,233,.16)` | hairline dividers (light / dark) |
 
-**Spacing:** 8-pt grid (4/8/12/16/24/32/48/64/96/128). **Radius:** soft, `8px` (`rounded-lg`),
-consistent. **Shadow:** two subtle elevation levels, no glow, no text shadow.
+CTAs are **monochrome-architectural** (solid iron on paper / solid paper on iron), not a colored button —
+accent is reserved for detail. **Radius:** sharp `2px` (architectural). **Spacing:** fluid `clamp()` scale.
 
-**Signature element (Phase 4 requirement):** a **timber-frame corner bracket** — thin L-shaped corner
-rules echoing the house-outline logo — used as the section-divider / stat-frame motif on every page,
-plus an oversized `01 / 02 / 03` numbered-list style for process sections.
+**Signature element:** a **custom contour mark** — three hand-drawn ridgelines (North Shore topography /
+Superior horizon), one in timber — used as the brand mark (header/footer/favicon). Plus film-grain overlay,
+oversized `01–06` tabular numerals, and a custom cursor + magnetic CTAs as the interaction signature.
 
-**Imagery rules:** Logo = NEEDS LOGO → clean **"PRO CON" wordmark** in Fraunces with a minimal
-house-outline mark (consistent with current site). No photos yet → warm `neutral-100` blocks with
-type-driven hierarchy; **no** stock, gradient blobs, or placeholder images. Swap in real project
-photos (AVIF/WebP, descriptive filenames) as the Gallery is collected.
+**Imagery rules:** Logo = custom contour wordmark (no stock house icon). No photos yet → cinematic
+type-on-iron compositions with contour linework + grain (no gray boxes, no stock, no gradient blobs).
+Swap in art-directed project photography (AVIF/WebP, descriptive filenames) as the Gallery is collected.
 
 **Five hero patterns (Package 3 — defined up front, same tokens, different rhythm per archetype):**
 1. **Home** — most expressive; editorial split (anchor copy left, project photo right), oversized H1,

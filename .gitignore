@@ -18,3 +18,4 @@ dist/
 *.log
 *.tmp
 docs/pdfpages/
+.dev-server.js

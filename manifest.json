@@ -1,0 +1,13 @@
+{
+  "name": "Pro Con LLC — Custom Home Builder",
+  "short_name": "Pro Con",
+  "description": "Family-owned custom home builder and remodeler in Duluth, MN.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#1F2A33",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/assets/img/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ]
+}

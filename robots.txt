@@ -1,0 +1,57 @@
+# robots.txt — Pro Con LLC (proconmn.com)
+# AI-bot posture: OPEN (per intake A15). Service business — allow everything.
+
+# Standard search engines
+User-agent: *
+Allow: /
+
+# OpenAI ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: ClaudeWeb
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI (separate from Googlebot)
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft Copilot / Bing
+User-agent: BingBot
+Allow: /
+
+# Apple Spotlight / Siri
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (feeds many AI models)
+User-agent: CCBot
+Allow: /
+
+# ByteDance
+User-agent: Bytespider
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+Sitemap: https://www.proconmn.com/sitemap.xml
+Sitemap: https://www.proconmn.com/llms.txt

@@ -1,0 +1,156 @@
+
+ Pg Chars Heading
+ -- ----- -------
+  1   116 Website Build Bible
+  2  1361 Table of Contents
+  3  1410 40. PHASE 7 -- COPY DIRECTION (APPLIES TO EVERY PAGE)
+  4  1168 83. PART 5 -- 2026 STANDARDS (CROSS-CUTTING UPGRADES)
+  5  1297 SIMPLE BUILD AI -- MASTER BIBLE v3
+  6  1449 2. Fill out SECTION A -- CLIENT INTAKE BLOCK completely. If unknown, w
+  7  2085 THE EIGHT DISCIPLINES -- WHAT THEY MEAN AND WHY EVERY
+  8  2137 35% + AXO 30%) that answers the executive question "how AI-ready is ou
+  9  2421 This bible is grounded in current authoritative sources. Every rule tr
+ 10  1345 PART 1 -- THE EIGHT DISCIPLINES (REFERENCE)
+ 11  2171 UNIVERSAL AXO MANDATES (every page, every phase)
+ 12  2200 UNIVERSAL AIO MANDATES (rollup metric)
+ 13  2419 9. Navigation depth: Any page reachable in 2 clicks from the homepage.
+ 14   358 PART 2 -- UNIVERSAL CLIENT INTAKE (SECTION A)
+ 15  1313 SECTION A -- CLIENT INTAKE BLOCK
+ 16  1464 A3. Contact
+ 17  1310 A7. Reviews & Testimonials
+ 18   774 Reading level target: Not present in the provided text; requires lingu
+ 19   937 A15. UX/UI Preferences (NEW in v3.1)
+ 20   105 SECTION B -- BUILD DIRECTIVE (PHASES 1�10)
+ 21  1819 PHASE 1 -- CONTEXT ABSORPTION & STRATEGIC POSITIONING
+ 22   964 PHASE 1 -- GEO MANDATE
+ 23  1231 PHASE 2 -- SITE ARCHITECTURE
+ 24  1851 For deep service-specific sub-pages with the hub-and-spoke pattern, us
+ 25     0 
+ 26  1151 PHASE 3 -- BRAND & VISUAL SYSTEM
+ 27   845 Radius
+ 28  1535 PHASE 4 -- ANTI-GENERIC DESIGN MANDATES
+ 29  1323 One unexpected detail per page -- a thoughtful hover state, marquee st
+ 30  1380 PHASE 5 -- HOMEPAGE BUILD (SECTION-BY-SECTION)
+ 31  1529 Subhead beneath, narrower column.
+ 32  1329 No tracking pixels in the hero area. Defer all analytics/tracking to a
+ 33  1822 5.4 -- AEO MANDATE
+ 34  1634 5.6 -- SEO MANDATE
+ 35  1596 5.8 -- SEO MANDATE
+ 36  1341 Include at least one named entity per answer (certification name, city
+ 37  1174 5.11 -- SEO MANDATE
+ 38  1619 PHASE 6 -- SECONDARY PAGE BUILDS (if applicable)
+ 39  1641 About Page (if used)
+ 40   744 Contact Page -- SEO MANDATE
+ 41  1279 PHASE 7 -- COPY DIRECTION (APPLIES TO EVERY PAGE)
+ 42  1830 No keyword stuffing. No unnatural repetition. If the copy reads awkwar
+ 43  1354 PHASE 8 -- TECHNICAL & SEO SPECS (CORE WEB VITALS 2026)
+ 44  1359 No horizontal scroll at any width.
+ 45  1303 foundingDate : from A1
+ 46  1331 # [Company Name]
+ 47  1782 Any directory listings
+ 48   440 HTML build: prefer Formspree-style POST over mailto: .
+ 49  1567 PHASE 9 -- CODE OUTPUT REQUIREMENTS
+ 50   408 Universal output rules
+ 51   994 PHASE 10 -- QA CHECKLIST (Claude self-audits before final output)
+ 52  1234 Trust audit
+ 53  1726 [ ] LocalBusiness schema is comprehensive (all fields from Phase 8 pop
+ 54  1906 [ ] Security headers documented in deployment instructions: HSTS, X-Co
+ 55  1968 [ ] Estimated AXO score (Claude self-assessment) recorded in QA output
+ 56  1811 [ ] CTA contrast: element >= 3:1 against surrounding background, text 
+ 57  1277 8. Security Implementation Notes (NEW): Security headers to configure 
+ 58   261 SIMPLE BUILD AI -- PACKAGE 2 (v2)
+ 59  1964 Full discipline definitions are in Package 1 v3.1 (PART 0). The Univer
+ 60  1695 Internal linking architecture -- hub-and-spoke patterns drive both SEO
+ 61    65 3. Claude executes Phases 1�10 in order and delivers production-ready 
+ 62    86 SECTION B -- BUILD DIRECTIVE (PHASES 1�10)
+ 63  1486 PHASE 1 -- CONTEXT ABSORPTION & STRATEGIC POSITIONING
+ 64   347 PHASE 1 -- ISO MANDATE
+ 65  1437 PHASE 2 -- SITE ARCHITECTURE & SUB-PAGE RULE
+ 66  1621 Page Count Reconciliation
+ 67   992 The Services hub page answers the "overview" question. When AI is aske
+ 68   738 PHASE 3 -- BRAND & VISUAL SYSTEM
+ 69  1481 PHASE 4 -- ANTI-GENERIC DESIGN MANDATES
+ 70   784 PHASE 4 -- AEO ANTI-TEMPLATING MANDATE
+ 71  1360 PHASE 5 -- PAGE BUILDS (SECTION-BY-SECTION)
+ 72  1610 - Unique <title> : `[Service Category]
+ 73  1289 3�5 steps. Note: each sub-page has its OWN process for that specific s
+ 74  1616 5C.2 -- SEO MANDATE
+ 75  1626 5C.4 -- AEO MANDATE
+ 76  1558 Factors that affect price (listed as a short bullet list)
+ 77  1676 Questions must be unique across all sub-pages. No "How long does it ta
+ 78  1126 HowTo schema for the process section (if implementable).
+ 79  1309 About Page -- AEO/GEO MANDATE (E-E-A-T IS THE GAME HERE)
+ 80  1254 "Is the estimate free?"
+ 81  1220 PHASE 6 -- INTERNAL LINKING STRATEGY
+ 82  1209 Anchor text diversity: Don't use the same anchor text for every link t
+ 83  1659 PHASE 7 -- COPY DIRECTION
+ 84   176 First-person expertise on every sub-page. "In our experience replacing
+ 85  1249 PHASE 8 -- TECHNICAL & SEO SPECS
+ 86  1058 Performance per page
+ 87   755 PHASE 9 -- CODE OUTPUT REQUIREMENTS
+ 88  1078 /app
+ 89     0 
+ 90  1478 PHASE 10 -- QA CHECKLIST
+ 91  1429 [ ] BreadcrumbList on every non-home page.
+ 92  1083 4. Design tokens.
+ 93  1721 THE EIGHT DISCIPLINES -- REFERENCE
+ 94  2085 Service Area Page (SAP) best practices -- Sterling Sky, Search Engine 
+ 95   711 GEO: The dual hub-and-spoke creates the richest entity graph possible 
+ 96    36 SECTION B -- BUILD DIRECTIVE (PHASES 1�10)
+ 97  1812 PHASE 1 -- CONTEXT ABSORPTION & STRATEGIC POSITIONING
+ 98   904 PHASE 1 -- GEO MANDATE (PACKAGE 3 EXTENDED)
+ 99   991 PHASE 2 -- SITE ARCHITECTURE & DUAL HUB-AND-SPOKE
+100  1646 Page Count Reconciliation
+101   683 This bidirectional entity graph is exactly what generative engines nee
+102  1191 PHASE 3 -- BRAND & VISUAL SYSTEM
+103  1313 PHASE 4 -- ANTI-GENERIC DESIGN MANDATES
+104  1424 "We're the trusted [service] provider in [city]."
+105  1508 PHASE 5 -- PAGE BUILDS
+106  1754 Use only cities from A2.2 where this service is most-requested (per A4
+107  1376 5E.1 Hero
+108  1511 5E.3 -- GEO MANDATE
+109  1396 5F. CITY SUB-PAGE ( /areas/[city-slug] ) -- THE STRUCTURAL INNOVATION 
+110  1773 5F.2 -- GEO MANDATE
+111  1760 5F.5 -- SEO MANDATE
+112  1645 5F.8 -- AEO MANDATE
+113  1395 5F.11 Adjacent areas
+114  1578 5G.2 Article grid
+115  1375 5G.3 -- GEO MANDATE
+116   143 Multiple Review entries
+117  1243 PHASE 6 -- INTERNAL LINKING STRATEGY (DUAL HUB)
+118   975 PHASE 6 -- AEO LINKING MANDATE
+119  1238 PHASE 7 -- COPY DIRECTION
+120   953 PHASE 7 -- AEO COPY MANDATE FOR CITY PAGES
+121  1364 PHASE 8 -- TECHNICAL & SEO SPECS
+122  1493 ## Services
+123   705 PHASE 9 -- CODE OUTPUT REQUIREMENTS
+124  1184 /app
+125   263 Universal output rules
+126  1524 PHASE 10 -- QA CHECKLIST
+127  1675 Helpful content audit
+128  1680 [ ] Geo meta tags present on city sub-pages only (not on service pages
+129  1164 How to add a new service later (create sub-page, add to hub, add to ci
+130  1027 INDUSTRY ADDENDUM 1 OF 4 -- RESTAURANT
+131  1840 For service businesses: Owner's specific years in trade, specific lice
+132   189 5.2 -- AI ENGINE STANDARDS (CHATGPT, CLAUDE, PERPLEXITY,
+133   817 # Standard search engines
+134  1306 5.2.2 -- llms.txt (mandatory for 2026)
+135  1169 Cross-reference related sections. Internal links to sibling pages help
+136  1341 Element Use For
+137   930 5.4 -- SPEAKABLE SCHEMA (VOICE-ASSISTANT SUPPORT)
+138  1272 Image visibility is its own ranking surface in 2026 (Google Images, Bi
+139  1070 For product images: brand + product name + view/angle. "Allbirds Tree 
+140  1272 5.6.1 -- schema.org/Action (for Siri Shortcuts)
+141  1708 5.7 -- SOCIAL META: FULL OPEN GRAPH + TWITTER CARD SPEC
+142  1103 5.8 -- CORE WEB VITALS + LIGHTHOUSE TARGETS (2026)
+143  1017 Google's 2026 freshness algorithm explicitly demotes pages without upd
+144  1466 5.10.1 -- Required Headers
+145  1137 5.11 -- STICKY MOBILE CTA + scroll-margin-top
+146  1233 5.12.2 -- Wikidata Item Structure
+147   454 5.13.2 -- WCAG 2.3 (early readiness -- 2026 final)
+148   895 Schema Type Required For Notes
+149  1827 <!DOCTYPE html>
+150   695 <script type="application/ld+json">[JSON-LD]</script>
+151  1191 Phase 8 (Technical & SEO Specs) -- Apply 5.5 (Images), 5.7 (Social Met
+
+

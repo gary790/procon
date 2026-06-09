@@ -18,7 +18,16 @@ Pro Con LLC is a residential general contractor in Duluth, MN, established in 20
 - Window & Door Installation: Replacement windows and exterior doors. -> /services/window-door-installation
 
 ## Service Area
-Based in Duluth, MN 55804. Serves Duluth, Hermantown, Cloquet, Two Harbors, Hibbing, Grand Rapids, Virginia, Rice Lake, Esko (Thomson Township), Lakewood Township, Arnold, Proctor, Carlton, Fredenberg Township, and Grand Lake Township.
+Based in Duluth, MN 55804. Serves Duluth and Northern Minnesota.
+
+## Areas Served (dedicated pages)
+- Duluth, MN: /areas/duluth-mn
+- Hermantown, MN: /areas/hermantown-mn
+- Cloquet, MN: /areas/cloquet-mn
+- Two Harbors, MN: /areas/two-harbors-mn
+- Proctor, MN: /areas/proctor-mn
+- Esko, MN: /areas/esko-mn
+- Also serving: Hibbing, Grand Rapids, Virginia, Rice Lake, Lakewood Township, Arnold, Carlton, Fredenberg Township, and Grand Lake Township.
 
 ## Contact
 - Phone: (218) 348-2076

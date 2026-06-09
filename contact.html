@@ -125,12 +125,8 @@
         <!-- FORM -->
         <div>
           <h2 class="h-sub" data-reveal style="font-family:var(--clash);font-weight:600;margin-bottom:1.8rem">Request an estimate</h2>
-          <form id="estimate-form" class="form" action="https://api.web3forms.com/submit" method="POST" data-reveal novalidate>
+          <form id="estimate-form" class="form" action="/api/contact" method="POST" data-reveal novalidate>
             <div class="form__body">
-              <!-- Web3Forms config: replace the access_key with Pro Con's key (free at web3forms.com, tied to danb.procon@gmail.com) -->
-              <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
-              <input type="hidden" name="subject" value="New estimate request — proconmn.com">
-              <input type="hidden" name="from_name" value="Pro Con Website">
               <div class="form__hp" aria-hidden="true"><label>Leave this empty<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
 
               <div class="field" id="f-name">

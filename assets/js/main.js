@@ -109,12 +109,61 @@
     });
   }
 
-  /* ---- Year, email obfuscation ---- */
-  var y = document.getElementById('year'); if (y) y.textContent = String(new Date().getFullYear());
-  var em = document.getElementById('email');
-  if (em) { var a = 'danb.procon' + '@' + 'gmail.com'; em.href = 'mailto:' + a; if (em.dataset.show) em.textContent = a; }
+  /* ---- Year, email obfuscation (all data-show links) ---- */
+  var yr = document.getElementById('year'); if (yr) yr.textContent = String(new Date().getFullYear());
+  var addr = 'danb.procon' + '@' + 'gmail.com';
+  document.querySelectorAll('a[data-show]').forEach(function (em) { em.href = 'mailto:' + addr; em.textContent = addr; });
 
   /* ---- Conversion events (no-op until GA4 id wired) ---- */
   function track(n, p) { if (typeof window.gtag === 'function') window.gtag('event', n, p || {}); }
   document.querySelectorAll('a[href^="tel:"]').forEach(function (a) { a.addEventListener('click', function () { track('phone_click', { phone: a.getAttribute('href') }); }); });
+
+  /* ---- Estimate form: validation, honeypot, async submit, success state ---- */
+  var form = document.getElementById('estimate-form');
+  if (form) {
+    var required = ['name', 'email', 'phone', 'project'];
+    var fieldOf = { name: 'f-name', email: 'f-email', phone: 'f-phone', project: 'f-type' };
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validate(id) {
+      var input = document.getElementById(id);
+      var field = document.getElementById(fieldOf[id]);
+      if (!input || !field) return true;
+      var v = (input.value || '').trim();
+      var ok = !!v;
+      if (id === 'email') ok = emailRe.test(v);
+      if (id === 'phone') ok = v.replace(/\D/g, '').length >= 10;
+      field.classList.toggle('field--error', !ok);
+      return ok;
+    }
+    required.forEach(function (id) {
+      var input = document.getElementById(id);
+      if (input) input.addEventListener('blur', function () { validate(id); });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Honeypot — silently succeed-look without sending
+      if (form.querySelector('[name="botcheck"]') && form.querySelector('[name="botcheck"]').checked) { form.classList.add('is-sent'); return; }
+
+      var valid = true, firstBad = null;
+      required.forEach(function (id) { var ok = validate(id); if (!ok && !firstBad) firstBad = id; valid = valid && ok; });
+      if (!valid) { if (firstBad) document.getElementById(firstBad).focus(); return; }
+
+      var btn = document.getElementById('submit-btn');
+      if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; btn.firstChild.textContent = 'Sending…'; }
+
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (res.ok && res.d && res.d.success) { form.classList.add('is-sent'); track('form_submit', { form_name: 'estimate' }); window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: reduce ? 'auto' : 'smooth' }); }
+          else { throw new Error('send failed'); }
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.firstChild.textContent = 'Request an Estimate'; }
+          var note = form.querySelector('.form__note');
+          if (note) note.innerHTML = 'Something went wrong sending that. Please call <a href="tel:+12183482076" class="ulink">(218) 348-2076</a> or email us directly.';
+        });
+    });
+  }
 })();

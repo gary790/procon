@@ -156,7 +156,23 @@
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
         .then(function (res) {
-          if (res.ok && res.d && res.d.success) { form.classList.add('is-sent'); track('form_submit', { form_name: 'estimate' }); window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: reduce ? 'auto' : 'smooth' }); }
+          if (res.ok && res.d && res.d.success) {
+            form.classList.add('is-sent'); track('form_submit', { form_name: 'estimate' });
+            /* Push the lead to SagiFlo (lead board) — fire-and-forget */
+            if (window.SagiFlo && typeof window.SagiFlo.capture === 'function') {
+              try {
+                window.SagiFlo.capture({
+                  name: form.querySelector('[name="name"]').value,
+                  email: form.querySelector('[name="email"]').value,
+                  phone: form.querySelector('[name="phone"]').value,
+                  message: 'Project: ' + (form.querySelector('[name="project_type"]').value || '—') +
+                    (form.querySelector('[name="city"]').value ? ' | City: ' + form.querySelector('[name="city"]').value : '') +
+                    (form.querySelector('[name="message"]').value ? ' | ' + form.querySelector('[name="message"]').value : '')
+                });
+              } catch (_) {}
+            }
+            window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: reduce ? 'auto' : 'smooth' });
+          }
           else { throw new Error('send failed'); }
         })
         .catch(function () {

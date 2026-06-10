@@ -115,6 +115,7 @@ h1,h2,h3,h4{font-family:var(--clash);font-weight:600;line-height:.98;letter-spac
 .brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--clash);font-weight:600;font-size:1.4rem;letter-spacing:.02em;line-height:1}
 .brand svg{width:26px;height:32px;overflow:visible}
 .brand img{display:block;height:48px;width:auto}
+.brand .brand__on-dark{filter:drop-shadow(0 1px 10px rgba(10,12,14,.55)) drop-shadow(0 1px 3px rgba(10,12,14,.5))}
 .head.is-stuck .brand img{height:42px}
 /* swap logo variant with header state: light art over dark hero, dark art on stuck/light header */
 .brand .brand__on-light{display:none}

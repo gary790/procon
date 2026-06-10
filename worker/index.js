@@ -78,6 +78,128 @@ function rateLimited(ip) {
   return hits.length > 3;
 }
 
+/* ---- Customer confirmation email (branded, table-based for email clients) ----
+   Brand tokens mirror the site: iron #13171A · paper #F3F0E9 · timber #B07A37.
+   Images are absolute URLs served from the live site. */
+function buildConfirmationEmail({ first, project, city }) {
+  const SITE = 'https://www.proconmn.com';
+  const projectLine = project
+    ? `about your <strong style="color:#13171A">${esc(project.toLowerCase())}</strong>${city ? ` in ${esc(city)}` : ''}`
+    : 'about your project';
+
+  const services = [
+    { img: `${SITE}/assets/img/custom-home-winter-dusk-duluth-mn.jpg`, title: 'Custom Homes', desc: 'Ground-up builds designed for Northern Minnesota winters.', href: `${SITE}/services/custom-home-construction` },
+    { img: `${SITE}/assets/img/kitchen-remodel-duluth-mn.jpg`, title: 'Kitchen & Bath Remodels', desc: 'Full-gut renovations done on schedule and in writing.', href: `${SITE}/services/kitchen-remodeling` },
+    { img: `${SITE}/assets/img/home-addition-northern-mn.jpg`, title: 'Additions & Garages', desc: 'More room, built to match the home you already love.', href: `${SITE}/services/home-additions` },
+  ];
+
+  const serviceRows = services.map((s) =>
+    `<tr><td style="padding:0 0 16px">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFFFFF;border:1px solid #E5E1D8;border-radius:10px">
+        <tr>
+          <td width="160" style="padding:0">
+            <a href="${s.href}" style="text-decoration:none">
+              <img src="${s.img}" width="160" height="110" alt="${esc(s.title)}" style="display:block;width:160px;height:110px;object-fit:cover;border-radius:10px 0 0 10px">
+            </a>
+          </td>
+          <td style="padding:14px 18px;vertical-align:middle">
+            <a href="${s.href}" style="text-decoration:none">
+              <span style="display:block;font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:bold;color:#13171A;margin:0 0 4px">${esc(s.title)}</span>
+            </a>
+            <span style="display:block;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#585C5C">${esc(s.desc)}</span>
+          </td>
+        </tr>
+      </table>
+    </td></tr>`).join('');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ProCon LLC</title></head>
+<body style="margin:0;padding:0;background:#F3F0E9">
+  <div style="display:none;max-height:0;overflow:hidden;mso-hide:all">Your estimate request is in — Dan will reach out within one business day, usually sooner.</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F0E9">
+    <tr><td align="center" style="padding:32px 16px">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%">
+
+        <!-- Logo header -->
+        <tr><td align="center" style="padding:0 0 24px">
+          <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+            <td style="background:#FFFFFF;border:1px solid #E5E1D8;border-radius:12px;padding:14px 28px">
+              <a href="${SITE}" style="text-decoration:none">
+                <img src="${SITE}/assets/img/procon-logo-card.png" width="200" alt="ProCon — Build, Renovate, Reconstruct" style="display:block;width:200px;height:auto;border:0">
+              </a>
+            </td>
+          </tr></table>
+        </td></tr>
+
+        <!-- Hero card -->
+        <tr><td style="background:#13171A;border-radius:12px 12px 0 0;padding:40px 40px 34px;text-align:center">
+          <span style="display:block;font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#B07A37;margin:0 0 14px">Request received</span>
+          <span style="display:block;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.25;color:#F3F0E9;font-weight:bold">You're on Dan's desk,<br>${esc(first)}.</span>
+        </td></tr>
+
+        <!-- Body card -->
+        <tr><td style="background:#FFFFFF;padding:36px 40px 8px">
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#13171A;margin:0 0 18px">
+            Thank you for reaching out to <strong>ProCon LLC</strong>. We've received your request ${projectLine}, and <strong>you'll hear from us within one business day</strong> — usually the same day during business hours.
+          </p>
+
+          <!-- What happens next -->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F0E9;border-radius:10px;margin:0 0 26px">
+            <tr><td style="padding:22px 24px">
+              <span style="display:block;font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#B07A37;margin:0 0 12px">What happens next</span>
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.9;color:#13171A;vertical-align:top;padding-right:10px"><strong style="color:#B07A37">1.</strong></td><td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.9;color:#13171A">Dan Bruckelmyer — the owner — reviews your request personally.</td></tr>
+                <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.9;color:#13171A;vertical-align:top;padding-right:10px"><strong style="color:#B07A37">2.</strong></td><td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.9;color:#13171A">We call or email to talk scope, timing, and a site visit.</td></tr>
+                <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.9;color:#13171A;vertical-align:top;padding-right:10px"><strong style="color:#B07A37">3.</strong></td><td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.9;color:#13171A">You get a free, written estimate — no pressure, no surprises.</td></tr>
+              </table>
+            </td></tr>
+          </table>
+
+          <!-- Urgent CTA -->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 30px">
+            <tr><td align="center">
+              <a href="tel:+12183482076" style="display:inline-block;background:#B07A37;color:#FFFFFF;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;text-decoration:none;padding:14px 34px;border-radius:8px">Need it sooner? Call Dan — (218) 348-2076</a>
+            </td></tr>
+          </table>
+        </td></tr>
+
+        <!-- Services showcase -->
+        <tr><td style="background:#FFFFFF;padding:0 40px 10px">
+          <span style="display:block;font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#B07A37;margin:0 0 14px">While you wait — what we build</span>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${serviceRows}</table>
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;margin:4px 0 26px"><a href="${SITE}/gallery" style="color:#B07A37;font-weight:bold;text-decoration:none">See our recent work in the gallery &rarr;</a></p>
+        </td></tr>
+
+        <!-- Trust bar -->
+        <tr><td style="background:#FFFFFF;border-radius:0 0 12px 12px;padding:0 40px 34px">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #E5E1D8">
+            <tr>
+              <td align="center" style="padding:22px 6px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#585C5C;width:33%"><strong style="display:block;color:#13171A;font-size:14px">Family-owned</strong>Owner-led on every job</td>
+              <td align="center" style="padding:22px 6px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#585C5C;width:33%"><strong style="display:block;color:#13171A;font-size:14px">~30 years</strong>Hands-on experience</td>
+              <td align="center" style="padding:22px 6px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#585C5C;width:33%"><strong style="display:block;color:#13171A;font-size:14px">Licensed &amp; insured</strong>MN #QB807406</td>
+            </tr>
+          </table>
+        </td></tr>
+
+        <!-- Footer -->
+        <tr><td align="center" style="padding:28px 24px 8px">
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.8;color:#585C5C;margin:0">
+            <strong style="color:#13171A">ProCon LLC</strong> · 2989 Roberg Rd, Duluth, MN 55804<br>
+            <a href="tel:+12183482076" style="color:#B07A37;text-decoration:none">(218) 348-2076</a> · <a href="${SITE}" style="color:#B07A37;text-decoration:none">proconmn.com</a><br>
+            Serving Duluth, Hermantown, Two Harbors &amp; all of Northern Minnesota<br>
+            Mon&ndash;Fri 7:00am&ndash;4:30pm · MN License #QB807406 · Insured
+          </p>
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#9B9E9E;margin:14px 0 0">You're receiving this because you requested an estimate at proconmn.com.</p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
 async function handleContact(request, env) {
   let d = {};
   try {
@@ -148,15 +270,8 @@ async function handleContact(request, env) {
   }
 
   const first = (name.split(/\s+/)[0] || name);
-  const confHtml =
-    `<div style="font-family:Arial,Helvetica,sans-serif;color:#13171A;font-size:15px;line-height:1.7;max-width:520px">` +
-    `<p>Hi ${esc(first)},</p>` +
-    `<p>Thanks for reaching out to <strong>ProCon</strong> — we've received your request` +
-    `${project ? ` about your ${esc(project).toLowerCase()}` : ''} and <strong>we'll be in touch within one business day</strong>, usually sooner.</p>` +
-    `<p>If it's urgent, you can reach Dan directly at <a href="tel:+12183482076" style="color:#B07A37">(218) 348-2076</a>.</p>` +
-    `<p style="margin-top:22px;color:#585C5C;font-size:13px">— ProCon LLC · Duluth, MN<br>` +
-    `Custom homes &amp; remodeling across Northern Minnesota · MN&nbsp;#QB807406</p></div>`;
-  try { await send({ from: FROM, to: [email], subject: 'We got your request — ProCon LLC', html: confHtml }); } catch (_) {}
+  const confHtml = buildConfirmationEmail({ first, project, city });
+  try { await send({ from: FROM, to: [email], subject: `Your estimate request is in, ${first} — ProCon LLC`, html: confHtml }); } catch (_) {}
 
   return json({ success: true });
 }

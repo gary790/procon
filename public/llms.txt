@@ -27,7 +27,13 @@ Based in Duluth, MN 55804. Serves Duluth and Northern Minnesota.
 - Two Harbors, MN: /areas/two-harbors-mn
 - Proctor, MN: /areas/proctor-mn
 - Esko, MN: /areas/esko-mn
-- Also serving: Hibbing, Grand Rapids, Virginia, Rice Lake, Lakewood Township, Arnold, Carlton, Fredenberg Township, and Grand Lake Township.
+- Hibbing, MN: /areas/hibbing-mn
+- Grand Rapids, MN: /areas/grand-rapids-mn
+- Virginia, MN: /areas/virginia-mn
+- Also serving: Rice Lake, Lakewood Township, Arnold, Carlton, Fredenberg Township, and Grand Lake Township.
+
+## Gallery
+- Project gallery (custom homes, kitchens, baths, decks, garages, additions): /gallery
 
 ## Contact
 - Phone: (218) 348-2076
@@ -41,3 +47,6 @@ Based in Duluth, MN 55804. Serves Duluth and Northern Minnesota.
 - Insured
 - Workmanship guarantee
 - Owner Dan Bruckelmyer: in construction since 1997 (nearly three decades)
+
+## Full Content
+- Complete site content for AI systems: https://www.proconmn.com/llms-full.txt

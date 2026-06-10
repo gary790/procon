@@ -37,14 +37,11 @@
     revealables.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* ---- Header state (paper over hero -> stuck) ---- */
+  /* ---- Header state (collapse top-bar when stuck) ---- */
   var head = document.getElementById('head');
-  var hero = document.getElementById('hero');
   if (head) {
     var onScroll = function () {
-      var y = window.scrollY;
-      head.classList.toggle('is-stuck', y > 40);
-      if (hero) head.classList.toggle('on-dark', y < hero.offsetHeight - 90);
+      head.classList.toggle('is-stuck', window.scrollY > 40);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();

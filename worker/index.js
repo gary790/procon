@@ -6,8 +6,8 @@
    Required Worker env var (Settings > Variables and Secrets):
      RESEND_API_KEY   — Resend API key (secret)
    Optional:
-     MAIL_FROM        — verified sender, default "ProCon LLC <noreply@proconmn.com>"
-     LEAD_TO          — where leads go, default "danb.procon@gmail.com"
+     MAIL_FROM        — verified sender, default "ProCon LLC <info@proconmn.com>"
+     LEAD_TO          — where leads go, default "info@proconmn.com"
    (Sending from noreply@proconmn.com requires verifying proconmn.com in Resend.) */
 
 const json = (obj, status = 200) =>
@@ -37,8 +37,8 @@ async function handleContact(request, env) {
 
   const KEY = env.RESEND_API_KEY;
   if (!KEY) return json({ success: false, message: 'Email is not configured yet.' }, 500);
-  const FROM = env.MAIL_FROM || 'ProCon LLC <noreply@proconmn.com>';
-  const TO = env.LEAD_TO || 'danb.procon@gmail.com';
+  const FROM = env.MAIL_FROM || 'ProCon LLC <info@proconmn.com>';
+  const TO = env.LEAD_TO || 'info@proconmn.com';
 
   const send = (payload) =>
     fetch('https://api.resend.com/emails', {

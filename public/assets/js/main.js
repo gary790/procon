@@ -91,7 +91,7 @@
 
   /* ---- Year, email obfuscation (all data-show links) ---- */
   var yr = document.getElementById('year'); if (yr) yr.textContent = String(new Date().getFullYear());
-  var addr = 'danb.procon' + '@' + 'gmail.com';
+  var addr = 'info' + '@' + 'proconmn.com';
   document.querySelectorAll('a[data-show]').forEach(function (em) { em.href = 'mailto:' + addr; em.textContent = addr; });
 
   /* ---- Conversion events (no-op until GA4 id wired) ---- */

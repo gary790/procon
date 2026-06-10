@@ -146,9 +146,9 @@
               <div class="form__hp" aria-hidden="true"><label>Leave this empty<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
 
               <div class="field" id="f-name">
-                <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
-                <input id="name" name="name" type="text" autocomplete="name" aria-required="true" required>
-                <span class="err">Please enter your name.</span>
+                <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="First and last name" aria-required="true" required>
+                <span class="err">Please enter your first and last name.</span>
               </div>
               <div class="field" id="f-email">
                 <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
@@ -157,8 +157,8 @@
               </div>
               <div class="field" id="f-phone">
                 <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-required="true" required>
-                <span class="err">Add a phone number, including area code.</span>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(218) 555-0123" aria-required="true" required>
+                <span class="err">Enter a valid US phone number, including area code.</span>
               </div>
               <div class="field" id="f-type">
                 <label for="project">What are you building? <span class="req" aria-hidden="true">*</span></label>
@@ -185,6 +185,9 @@
               <div class="field" id="f-msg">
                 <label for="message">Project details</label>
                 <textarea id="message" name="message" autocomplete="off" placeholder="A few lines on what you're planning and rough timing."></textarea>
+              </div>
+              <div class="field" id="f-turnstile">
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAADiN0CXy_wGU75rB" data-theme="light"></div>
               </div>
               <button type="submit" class="btn btn--solid" data-magnetic style="width:100%;justify-content:center" id="submit-btn">Request an Estimate<span class="btn__dot"></span></button>
               <p class="form__note">Your information is secure and only used to respond to your inquiry. See our <a href="/privacy" class="ulink">privacy policy</a>.</p>
@@ -293,7 +296,8 @@
     <a href="#estimate-form" class="btn btn--solid">Free Estimate</a>
   </div>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="/assets/js/lenis.min.js?v=20260610k" defer></script>
-  <script src="/assets/js/main.js?v=20260610l" defer></script>
+  <script src="/assets/js/main.js?v=20260610m" defer></script>
 </body>
 </html>

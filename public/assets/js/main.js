@@ -103,7 +103,26 @@
   if (form) {
     var required = ['name', 'email', 'phone', 'project'];
     var fieldOf = { name: 'f-name', email: 'f-email', phone: 'f-phone', project: 'f-type' };
-    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function isFullName(v) {
+      v = v.replace(/\s+/g, ' ').trim();
+      if (v.length < 5) return false;
+      var parts = v.split(' ');
+      if (parts.length < 2) return false;
+      for (var i = 0; i < parts.length; i++) {
+        if (!/^[A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF'.-]+$/.test(parts[i])) return false;
+      }
+      return true;
+    }
+    function isUSPhone(v) {
+      var dg = v.replace(/\D/g, '');
+      if (dg.length === 11 && dg.charAt(0) === '1') dg = dg.slice(1);
+      if (dg.length !== 10) return false;
+      if (!/^[2-9]\d{2}[2-9]\d{6}$/.test(dg)) return false;
+      if (/^(\d)\1{9}$/.test(dg)) return false;
+      return true;
+    }
 
     function validate(id) {
       var input = document.getElementById(id);
@@ -111,8 +130,9 @@
       if (!input || !field) return true;
       var v = (input.value || '').trim();
       var ok = !!v;
+      if (id === 'name') ok = isFullName(v);
       if (id === 'email') ok = emailRe.test(v);
-      if (id === 'phone') ok = v.replace(/\D/g, '').length >= 10;
+      if (id === 'phone') ok = isUSPhone(v);
       field.classList.toggle('field--error', !ok);
       return ok;
     }
@@ -141,6 +161,7 @@
         })
         .catch(function () {
           if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.firstChild.textContent = 'Request an Estimate'; }
+          if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
           var note = form.querySelector('.form__note');
           if (note) note.innerHTML = 'Something went wrong sending that. Please call <a href="tel:+12183482076" class="ulink">(218) 348-2076</a> or email us directly.';
         });

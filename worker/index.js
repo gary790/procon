@@ -5,6 +5,7 @@
 
    Required Worker env var (Settings > Variables and Secrets):
      RESEND_API_KEY   — Resend API key (secret)
+     TURNSTILE_SECRET — Cloudflare Turnstile secret key (secret); bot protection
    Optional:
      MAIL_FROM        — verified sender, default "ProCon LLC <info@proconmn.com>"
      LEAD_TO          — where leads go, default "info@proconmn.com"
@@ -13,7 +14,69 @@
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } });
 const esc = (s) => String(s).replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
-const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
+
+/* Full name: at least two words (first + last), each 2+ chars, real-name
+   characters only (letters incl. accents, hyphens, apostrophes, periods). */
+const isFullName = (s) => {
+  if (s.length < 5 || s.length > 80) return false;
+  if (/https?:\/\/|www\.|[<>{}\[\]@#$%^*_=+~|\\\/0-9]/.test(s)) return false;
+  const parts = s.split(/\s+/).filter(Boolean);
+  if (parts.length < 2) return false;
+  return parts.every((p) => /^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ'.-]+$/.test(p) && p.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ]/g, '').length >= 2);
+};
+
+/* Valid US phone (NANP): 10 digits after stripping an optional leading 1;
+   area code and exchange must start 2-9; reject obvious junk patterns. */
+const usPhone = (s) => {
+  let dg = s.replace(/\D/g, '');
+  if (dg.length === 11 && dg[0] === '1') dg = dg.slice(1);
+  if (dg.length !== 10) return null;
+  if (!/^[2-9]\d{2}[2-9]\d{6}$/.test(dg)) return null;
+  if (/^(\d)\1{9}$/.test(dg)) return null;            // 5555555555 etc.
+  if (/(\d)\1{6,}/.test(dg)) return null;              // 7+ same digit run
+  if (dg === '1234567890' || dg.slice(3) === '1234567') return null;
+  if (dg.slice(0, 3) === '555' || dg.slice(3, 6) === '555') return null; // fictional
+  return dg;
+};
+
+/* Spam heuristics on the free-text message. */
+const looksSpammy = (msg) => {
+  const links = (msg.match(/https?:\/\/|www\./gi) || []).length;
+  if (links > 0) return true;                          // contractors call, they don't link
+  if (/\b(SEO|backlinks?|crypto|bitcoin|loan|viagra|casino|porn|escort|followers|ranking on google|web design services|boost your)\b/i.test(msg)) return true;
+  if (/[\u0400-\u04FF\u4E00-\u9FFF]/.test(msg)) return true; // Cyrillic/CJK blocks
+  return false;
+};
+
+/* Verify the Cloudflare Turnstile token. Fails closed when the secret is set. */
+async function verifyTurnstile(token, ip, env) {
+  if (!env.TURNSTILE_SECRET) return true; // not configured -> skip (other layers still apply)
+  if (!token) return false;
+  try {
+    const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ secret: env.TURNSTILE_SECRET, response: token, remoteip: ip }),
+    });
+    const d = await r.json();
+    return !!d.success;
+  } catch {
+    return false;
+  }
+}
+
+/* Best-effort per-IP rate limit (per isolate): max 3 submissions / 10 min. */
+const rlMap = new Map();
+function rateLimited(ip) {
+  const now = Date.now();
+  const windowMs = 10 * 60 * 1000;
+  const hits = (rlMap.get(ip) || []).filter((t) => now - t < windowMs);
+  hits.push(now);
+  rlMap.set(ip, hits);
+  if (rlMap.size > 5000) rlMap.clear(); // memory guard
+  return hits.length > 3;
+}
 
 async function handleContact(request, env) {
   let d = {};
@@ -25,15 +88,33 @@ async function handleContact(request, env) {
 
   if (d.botcheck) return json({ success: true }); // honeypot
 
-  const name = (d.name || '').toString().trim();
+  const ip = request.headers.get('cf-connecting-ip') || '';
+  if (rateLimited(ip)) return json({ success: false, message: 'Too many requests — please call us instead.' }, 429);
+
+  const name = (d.name || '').toString().trim().replace(/\s+/g, ' ');
   const email = (d.email || '').toString().trim();
   const phone = (d.phone || '').toString().trim();
   const project = (d.project_type || d.project || '').toString().trim();
   const city = (d.city || '').toString().trim();
   const message = (d.message || '').toString().trim();
 
-  if (!name || !isEmail(email) || phone.replace(/\D/g, '').length < 10 || !project)
+  if (!isFullName(name))
+    return json({ success: false, message: 'Please enter your first and last name.' }, 422);
+  if (!isEmail(email))
+    return json({ success: false, message: 'Please enter a valid email address.' }, 422);
+  const cleanPhone = usPhone(phone);
+  if (!cleanPhone)
+    return json({ success: false, message: 'Please enter a valid US phone number.' }, 422);
+  if (!project || project.length > 60)
     return json({ success: false, message: 'Please complete the required fields.' }, 422);
+  if (city.length > 80 || message.length > 4000)
+    return json({ success: false, message: 'Please complete the required fields.' }, 422);
+  if (looksSpammy(message) || looksSpammy(city))
+    return json({ success: false, message: 'Your message could not be sent. Please call us at (218) 348-2076.' }, 422);
+
+  const tsOK = await verifyTurnstile((d['cf-turnstile-response'] || d.turnstile || '').toString(), ip, env);
+  if (!tsOK)
+    return json({ success: false, message: 'Verification failed — please try again or call us.' }, 403);
 
   const KEY = env.RESEND_API_KEY;
   if (!KEY) return json({ success: false, message: 'Email is not configured yet.' }, 500);

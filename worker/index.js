@@ -126,6 +126,11 @@ async function handleReviews(request, env, ctx) {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    // Canonical host: redirect apex -> www (301, preserves path + query).
+    if (url.hostname === 'proconmn.com') {
+      url.hostname = 'www.proconmn.com';
+      return Response.redirect(url.toString(), 301);
+    }
     if (url.pathname === '/api/contact') {
       return request.method === 'POST'
         ? handleContact(request, env)

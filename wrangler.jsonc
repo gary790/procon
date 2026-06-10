@@ -5,6 +5,11 @@
   "name": "procon",
   "main": "worker/index.js",
   "compatibility_date": "2026-06-01",
+  // Production domains — www is canonical; the apex redirects to www in the Worker.
+  "routes": [
+    { "pattern": "www.proconmn.com", "custom_domain": true },
+    { "pattern": "proconmn.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "public",
     "binding": "ASSETS",

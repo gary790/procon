@@ -166,4 +166,117 @@
         });
     });
   }
+
+  /* ---- Live Duluth weather (Open-Meteo, no key) ---- */
+  var wx = document.getElementById('wx');
+  if (wx && 'fetch' in window) {
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=46.84&longitude=-92.05&current=temperature_2m,weather_code&temperature_unit=fahrenheit')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || !d.current) return;
+        var t = Math.round(d.current.temperature_2m);
+        var code = d.current.weather_code;
+        var sky = 'clear';
+        if (code >= 71 && code <= 77 || code === 85 || code === 86) sky = 'snowing';
+        else if (code >= 51 && code <= 67 || code >= 80 && code <= 82) sky = 'raining';
+        else if (code === 45 || code === 48) sky = 'fog';
+        else if (code >= 1 && code <= 3) sky = 'cloudy';
+        else if (code >= 95) sky = 'storming';
+        var line = (t <= 20) ? 'We build anyway.' : (t <= 40 ? 'Good building weather, by our standards.' : 'A fine day to pour footings.');
+        wx.innerHTML = '<i aria-hidden="true"></i><b>' + t + '\u00B0F</b> in Duluth right now \u2014 ' + sky + '. ' + line;
+        wx.classList.add('is-live');
+      })
+      .catch(function () { /* widget stays with its static fallback text */ });
+  }
+
+  /* ---- Image-break parallax ---- */
+  var breaks = document.querySelectorAll('.imgbreak img');
+  if (breaks.length && !reduce) {
+    var ticking = false;
+    var para = function () {
+      breaks.forEach(function (img) {
+        var r = img.parentElement.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        var p = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight; // -.5 .. .5 ish
+        img.style.transform = 'translateY(' + (p * -9) + '%)';
+      });
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(para); }
+    }, { passive: true });
+    para();
+  }
+
+  /* ---- Before / After slider ---- */
+  document.querySelectorAll('.ba').forEach(function (ba) {
+    var after = ba.querySelector('.ba__after');
+    var handle = ba.querySelector('.ba__handle');
+    if (!after || !handle) return;
+    var dragging = false;
+    function setPos(clientX) {
+      var r = ba.getBoundingClientRect();
+      var pct = Math.min(96, Math.max(4, ((clientX - r.left) / r.width) * 100));
+      after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+      handle.style.left = pct + '%';
+      ba.setAttribute('aria-valuenow', String(Math.round(pct)));
+    }
+    ba.addEventListener('pointerdown', function (e) { dragging = true; ba.setPointerCapture(e.pointerId); setPos(e.clientX); });
+    ba.addEventListener('pointermove', function (e) { if (dragging) setPos(e.clientX); });
+    ba.addEventListener('pointerup', function () { dragging = false; });
+    ba.addEventListener('pointercancel', function () { dragging = false; });
+    // Keyboard support
+    ba.setAttribute('tabindex', '0');
+    ba.setAttribute('role', 'slider');
+    ba.setAttribute('aria-label', 'Before and after comparison');
+    ba.setAttribute('aria-valuemin', '0'); ba.setAttribute('aria-valuemax', '100'); ba.setAttribute('aria-valuenow', '50');
+    ba.addEventListener('keydown', function (e) {
+      var now = parseFloat(ba.getAttribute('aria-valuenow')) || 50;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); var r1 = ba.getBoundingClientRect(); setPos(r1.left + r1.width * (now - 4) / 100); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); var r2 = ba.getBoundingClientRect(); setPos(r2.left + r2.width * (now + 4) / 100); }
+    });
+  });
+
+  /* ---- Gallery lightbox ---- */
+  var galFigs = document.querySelectorAll('.gal figure');
+  if (galFigs.length) {
+    var lbox = document.createElement('div');
+    lbox.className = 'lbox';
+    lbox.setAttribute('role', 'dialog');
+    lbox.setAttribute('aria-modal', 'true');
+    lbox.setAttribute('aria-label', 'Image viewer');
+    lbox.innerHTML = '<button class="lbox__x" aria-label="Close">&times;</button>'
+      + '<button class="lbox__nav lbox__prev" aria-label="Previous image">&larr;</button>'
+      + '<img alt="">'
+      + '<button class="lbox__nav lbox__next" aria-label="Next image">&rarr;</button>'
+      + '<p class="lbox__cap"></p>';
+    document.body.appendChild(lbox);
+    var lImg = lbox.querySelector('img'), lCap = lbox.querySelector('.lbox__cap'), idx = 0;
+    var items = [];
+    galFigs.forEach(function (fig, i) {
+      var im = fig.querySelector('img'); if (!im) return;
+      var cap = fig.querySelector('figcaption');
+      items.push({ src: im.currentSrc || im.src, alt: im.alt || '', cap: cap ? cap.textContent : '' });
+      fig.addEventListener('click', function () { openL(i); });
+      fig.setAttribute('tabindex', '0');
+      fig.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openL(i); } });
+    });
+    function show(i) {
+      idx = (i + items.length) % items.length;
+      lImg.src = items[idx].src; lImg.alt = items[idx].alt;
+      lCap.textContent = items[idx].cap;
+    }
+    function openL(i) { show(i); lbox.classList.add('is-open'); document.documentElement.style.overflow = 'hidden'; if (lenis) lenis.stop(); }
+    function closeL() { lbox.classList.remove('is-open'); document.documentElement.style.overflow = ''; if (lenis) lenis.start(); }
+    lbox.querySelector('.lbox__x').addEventListener('click', closeL);
+    lbox.querySelector('.lbox__prev').addEventListener('click', function () { show(idx - 1); });
+    lbox.querySelector('.lbox__next').addEventListener('click', function () { show(idx + 1); });
+    lbox.addEventListener('click', function (e) { if (e.target === lbox) closeL(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeL();
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+    });
+  }
 })();

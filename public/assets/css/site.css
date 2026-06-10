@@ -175,16 +175,21 @@ body:has(#head){padding-top:calc(var(--tbh) + var(--hbh))}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}40%{transform:scaleY(1);transform-origin:top}60%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ---------- Gallery ---------- */
-.gal{display:grid;gap:clamp(1.2rem,2.5vw,2rem)}
-.gal figure{margin:0;position:relative;overflow:hidden;background:var(--iron-2)}
+.gal{display:grid;gap:clamp(1.8rem,3.5vw,2.8rem) clamp(1.2rem,2.5vw,2rem)}
+.gal figure{margin:0;display:grid;align-content:start;gap:.85rem}
+.gal__media{position:relative;overflow:hidden;border-radius:var(--r);background:var(--iron-2)}
 .gal img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;max-height:19rem;transition:transform 1.1s var(--ease)}
 .gal figure:hover img{transform:scale(1.035)}
-.gal figcaption{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;padding:.9rem .15rem 0;font-size:.85rem;color:var(--ink-soft)}
-.gal figcaption .tag{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--timber);white-space:nowrap}
+.gal figcaption{display:grid;gap:.35rem;padding-right:.5rem}
+.gal figcaption .tag{font-family:var(--switzer);font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--timber)}
+.gal figcaption .cap{font-size:.92rem;line-height:1.55;color:var(--ink-soft);max-width:44ch}
+.on-iron .gal figcaption .tag{color:var(--superior)}
+.on-iron .gal figcaption .cap{color:var(--mist)}
 .gal--wide img{aspect-ratio:21/9}
 @media(min-width:640px){.gal{grid-template-columns:repeat(2,1fr)}.gal--wide{grid-column:1/-1}}
 @media(min-width:1100px){.gal{grid-template-columns:repeat(3,1fr)}}
 .gal--wide img{max-height:22rem}
+.gal--wide figcaption .cap{max-width:64ch}
 
 /* ---------- Marquee ---------- */
 .marquee{overflow:hidden;border-block:1px solid var(--line-d);padding-block:1rem}
@@ -426,7 +431,7 @@ body:has(#head){padding-top:calc(var(--tbh) + var(--hbh))}
 .lbox__nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2rem;padding:1rem;opacity:.7}
 .lbox__nav:hover{opacity:1}
 .lbox__prev{left:.6rem}.lbox__next{right:.6rem}
-.gal figure{cursor:zoom-in}
+.gal .gal__media{cursor:zoom-in}
 
 /* ---------- Giant footer wordmark ---------- */
 .foot__giant{font-family:var(--clash);font-weight:600;font-size:clamp(2rem,5vw,4.2rem);line-height:.9;letter-spacing:-.025em;color:var(--iron-2);user-select:none;text-align:center;padding-top:clamp(1.2rem,2.5vw,2rem);overflow:hidden;white-space:nowrap}

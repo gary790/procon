@@ -235,11 +235,14 @@
     var items = [];
     galFigs.forEach(function (fig, i) {
       var im = fig.querySelector('img'); if (!im) return;
-      var cap = fig.querySelector('figcaption');
-      items.push({ src: im.currentSrc || im.src, alt: im.alt || '', cap: cap ? cap.textContent : '' });
-      fig.addEventListener('click', function () { openL(i); });
-      fig.setAttribute('tabindex', '0');
-      fig.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openL(i); } });
+      var capEl = fig.querySelector('figcaption .cap') || fig.querySelector('figcaption');
+      items.push({ src: im.currentSrc || im.src, alt: im.alt || '', cap: capEl ? capEl.textContent : '' });
+      var hit = fig.querySelector('.gal__media') || fig;
+      hit.addEventListener('click', function () { openL(i); });
+      hit.setAttribute('tabindex', '0');
+      hit.setAttribute('role', 'button');
+      hit.setAttribute('aria-label', 'View larger: ' + (im.alt || 'photo'));
+      hit.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openL(i); } });
     });
     function show(i) {
       idx = (i + items.length) % items.length;

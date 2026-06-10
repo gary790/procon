@@ -1,7 +1,7 @@
 {
   "name": "procon-site",
   "private": true,
-  "description": "Pro Con LLC — Cloudflare Worker (static assets + contact API)",
+  "description": "ProCon LLC — Cloudflare Worker (static assets + contact API)",
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "wrangler dev"

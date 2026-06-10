@@ -1,14 +1,22 @@
 {
-  // Pro Con — Cloudflare Worker with Static Assets.
+  // ProCon — Cloudflare Worker with Static Assets.
   // Static files (the whole site) are served from the asset directory; the
   // Worker script only runs for non-asset paths (POST /api/contact).
   "name": "procon",
   "main": "worker/index.js",
   "compatibility_date": "2026-06-01",
+  // Production domains — www is canonical; the apex redirects to www in the Worker.
+  "routes": [
+    { "pattern": "www.proconmn.com", "custom_domain": true },
+    { "pattern": "proconmn.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "public",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // Run the Worker before asset serving so the apex -> www canonical
+    // redirect executes for every path (assets are still served via ASSETS).
+    "run_worker_first": true
   }
 }

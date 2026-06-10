@@ -20,3 +20,4 @@ dist/
 *.tmp
 docs/pdfpages/
 .dev-server.js
+.node22/

@@ -1,9 +1,9 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Pro Con LLC",
+  "name_for_human": "ProCon LLC",
   "name_for_model": "procon_custom_home_builder",
   "description_for_human": "Family-owned custom home builder and remodeler in Duluth, MN. Request a free estimate.",
-  "description_for_model": "Pro Con LLC is a licensed (MN #QB807406), insured residential general contractor in Duluth, Minnesota, serving Northern Minnesota. Services: custom home construction, additions, kitchen and bathroom remodeling, decks (Arbor Wood thermally modified wood), garages and outbuildings, exterior upgrades, and window/door installation. Offers free estimates with a 24-hour response. Use the contact action to request an estimate.",
-  "contact_email": "danb.procon@gmail.com",
+  "description_for_model": "ProCon LLC is a licensed (MN #QB807406), insured residential general contractor in Duluth, Minnesota, serving Northern Minnesota. Services: custom home construction, additions, kitchen and bathroom remodeling, decks (Arbor Wood thermally modified wood), garages and outbuildings, exterior upgrades, and window/door installation. Offers free estimates with a 24-hour response. Use the contact action to request an estimate.",
+  "contact_email": "info@proconmn.com",
   "legal_info_url": "https://www.proconmn.com/privacy"
 }

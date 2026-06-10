@@ -1,4 +1,4 @@
-/* PRO CON — North Shore Monolith — interaction layer */
+/* PROCON — North Shore Monolith — interaction layer */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

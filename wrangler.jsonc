@@ -1,5 +1,5 @@
 {
-  // Pro Con — Cloudflare Worker with Static Assets.
+  // ProCon — Cloudflare Worker with Static Assets.
   // Static files (the whole site) are served from the asset directory; the
   // Worker script only runs for non-asset paths (POST /api/contact).
   "name": "procon",

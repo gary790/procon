@@ -1,5 +1,5 @@
 /* ============================================================
-   PRO CON — "North Shore Monolith"
+   PROCON — "North Shore Monolith"
    Hand-authored design system. No framework. Self-hosted type.
    ============================================================ */
 
@@ -394,7 +394,7 @@ body:has(#head){padding-top:calc(var(--tbh) + var(--hbh))}
   .work__card--wide{grid-column:1/-1}
 }
 
-/* ---------- Spec sheet (The Pro Con Standard) ---------- */
+/* ---------- Spec sheet (The ProCon Standard) ---------- */
 .specsheet{border-top:1px solid var(--line-d)}
 .specsheet__row{display:grid;grid-template-columns:auto 1fr;gap:1.2rem 2rem;padding-block:clamp(1.6rem,3vw,2.4rem);border-bottom:1px solid var(--line-d);align-items:baseline}
 .specsheet__no{font-family:var(--clash);font-weight:500;font-size:.95rem;color:var(--superior)}

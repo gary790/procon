@@ -1,6 +1,6 @@
-# Pro Con LLC — Website
+# ProCon LLC — Website
 
-Marketing website for **Pro Con LLC** — a family-owned custom home builder and remodeling
+Marketing website for **ProCon LLC** — a family-owned custom home builder and remodeling
 contractor in Duluth, Minnesota, owner-led by Dan Bruckelmyer.
 
 - **Live domain:** [proconmn.com](https://www.proconmn.com)

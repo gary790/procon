@@ -1,12 +1,12 @@
-/* Pro Con — Cloudflare Worker (Static Assets + contact API)
+/* ProCon — Cloudflare Worker (Static Assets + contact API)
    Static files are served from the asset binding (ASSETS). The Worker only
    runs for non-asset paths — here, POST /api/contact, which emails the lead
-   to Pro Con and sends the customer a confirmation via Resend.
+   to ProCon and sends the customer a confirmation via Resend.
 
    Required Worker env var (Settings > Variables and Secrets):
      RESEND_API_KEY   — Resend API key (secret)
    Optional:
-     MAIL_FROM        — verified sender, default "Pro Con LLC <noreply@proconmn.com>"
+     MAIL_FROM        — verified sender, default "ProCon LLC <noreply@proconmn.com>"
      LEAD_TO          — where leads go, default "danb.procon@gmail.com"
    (Sending from noreply@proconmn.com requires verifying proconmn.com in Resend.) */
 
@@ -37,7 +37,7 @@ async function handleContact(request, env) {
 
   const KEY = env.RESEND_API_KEY;
   if (!KEY) return json({ success: false, message: 'Email is not configured yet.' }, 500);
-  const FROM = env.MAIL_FROM || 'Pro Con LLC <noreply@proconmn.com>';
+  const FROM = env.MAIL_FROM || 'ProCon LLC <noreply@proconmn.com>';
   const TO = env.LEAD_TO || 'danb.procon@gmail.com';
 
   const send = (payload) =>
@@ -70,12 +70,12 @@ async function handleContact(request, env) {
   const confHtml =
     `<div style="font-family:Arial,Helvetica,sans-serif;color:#13171A;font-size:15px;line-height:1.7;max-width:520px">` +
     `<p>Hi ${esc(first)},</p>` +
-    `<p>Thanks for reaching out to <strong>Pro Con</strong> — we've received your request` +
+    `<p>Thanks for reaching out to <strong>ProCon</strong> — we've received your request` +
     `${project ? ` about your ${esc(project).toLowerCase()}` : ''} and <strong>we'll be in touch within one business day</strong>, usually sooner.</p>` +
     `<p>If it's urgent, you can reach Dan directly at <a href="tel:+12183482076" style="color:#B07A37">(218) 348-2076</a>.</p>` +
-    `<p style="margin-top:22px;color:#585C5C;font-size:13px">— Pro Con LLC · Duluth, MN<br>` +
+    `<p style="margin-top:22px;color:#585C5C;font-size:13px">— ProCon LLC · Duluth, MN<br>` +
     `Custom homes &amp; remodeling across Northern Minnesota · MN&nbsp;#QB807406</p></div>`;
-  try { await send({ from: FROM, to: [email], subject: 'We got your request — Pro Con LLC', html: confHtml }); } catch (_) {}
+  try { await send({ from: FROM, to: [email], subject: 'We got your request — ProCon LLC', html: confHtml }); } catch (_) {}
 
   return json({ success: true });
 }

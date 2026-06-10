@@ -1,4 +1,4 @@
-# robots.txt — Pro Con LLC (proconmn.com)
+# robots.txt — ProCon LLC (proconmn.com)
 # AI-bot posture: OPEN (per intake A15). Service business — allow everything.
 
 # Standard search engines

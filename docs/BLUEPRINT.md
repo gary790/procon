@@ -1,4 +1,4 @@
-# Pro Con LLC — Website Blueprint (Stage 1)
+# ProCon LLC — Website Blueprint (Stage 1)
 
 > Built to **Simple Build AI Master Bible v3.1**. This document is the Phase 1–4 deliverable
 > (positioning, architecture, brand system, anti-generic mandates). It is the approval gate
@@ -13,7 +13,7 @@
 builder + remodeler), Northern Minnesota.
 
 **Stereotype to avoid (Phase 1.3):** construction-cliché safety-orange + hazard-black, hard-hat /
-hammer / blueprint clipart, "we build dreams" filler. Pro Con builds *custom homes* — the brand
+hammer / blueprint clipart, "we build dreams" filler. ProCon builds *custom homes* — the brand
 should read **premium, warm, craftsman, built-to-last**, not industrial-hazard.
 
 **Strategic angle (one sentence):**
@@ -22,11 +22,11 @@ should read **premium, warm, craftsman, built-to-last**, not industrial-hazard.
 > Dan Bruckelmyer's nearly three decades of hands-on, owner-run craftsmanship.
 
 **Positioning brief (3 sentences):**
-> Pro Con is a family-run, owner-led builder in Duluth that takes on the projects most people only
+> ProCon is a family-run, owner-led builder in Duluth that takes on the projects most people only
 > do once or twice in a lifetime — a new home, a duplex, a lake place, a full addition. What sets it
 > apart isn't a sales team or a franchise playbook; it's Dan Bruckelmyer personally on the job, with
 > nearly 30 years of building through Northern Minnesota winters and a workmanship guarantee behind
-> every project. The site's job is to make a homeowner feel that handing Pro Con an 8–12 month build
+> every project. The site's job is to make a homeowner feel that handing ProCon an 8–12 month build
 > is the safe, obvious choice — and to get them to request a free estimate.
 
 ### Phase 1 — SEO: keyword strategy
@@ -45,14 +45,14 @@ should read **premium, warm, craftsman, built-to-last**, not industrial-hazard.
   bidirectional service↔city link matrix (Phase 6), not standalone pages.
 
 ### Phase 1 — AEO: canonical identity sentence (used verbatim in meta, schema, About, footer)
-> **Pro Con LLC is a family-owned custom home builder and remodeling contractor in Duluth, Minnesota,
+> **ProCon LLC is a family-owned custom home builder and remodeling contractor in Duluth, Minnesota,
 > owner-led by Dan Bruckelmyer with nearly three decades of hands-on experience building and
 > renovating homes across Northern Minnesota.**
 
 ### Phase 1 — GEO: entity map
 | Entity | Status |
 |---|---|
-| Brand — Pro Con LLC (founded 2023, License QB807406) | ✅ |
+| Brand — ProCon LLC (founded 2023, License QB807406) | ✅ |
 | Person — Dan Bruckelmyer (owner/builder, since 1997, two generations) | ✅ |
 | Services — 10 (see Phase 2) | ✅ |
 | Location — Duluth HQ + 15 service-area cities | ✅ |

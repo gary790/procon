@@ -8,8 +8,9 @@ desktop.ini
 .idea/
 *.swp
 
-# Node (only if a build step is added later)
+# Node / Wrangler
 node_modules/
+.wrangler/
 npm-debug.log*
 dist/
 .cache/

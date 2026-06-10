@@ -1,0 +1,14 @@
+{
+  // Pro Con — Cloudflare Worker with Static Assets.
+  // Static files (the whole site) are served from the asset directory; the
+  // Worker script only runs for non-asset paths (POST /api/contact).
+  "name": "procon",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-06-01",
+  "assets": {
+    "directory": "public",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

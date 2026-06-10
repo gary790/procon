@@ -77,25 +77,8 @@
     t.innerHTML += t.innerHTML;
   });
 
-  /* ---- Magnetic buttons + custom cursor (desktop, fine pointer) ---- */
+  /* ---- Magnetic buttons (desktop, fine pointer) ---- */
   if (finePointer && !reduce) {
-    var cursor = document.createElement('div');
-    cursor.className = 'cursor';
-    document.body.appendChild(cursor);
-    var cx = window.innerWidth / 2, cy = window.innerHeight / 2, tx = cx, ty = cy, shown = false;
-    window.addEventListener('mousemove', function (e) {
-      tx = e.clientX; ty = e.clientY;
-      if (!shown) { shown = true; cursor.classList.add('is-active'); }
-    });
-    (function loop() {
-      cx += (tx - cx) * 0.18; cy += (ty - cy) * 0.18;
-      cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
-      requestAnimationFrame(loop);
-    })();
-    document.querySelectorAll('a, button, summary, [data-magnetic]').forEach(function (el) {
-      el.addEventListener('mouseenter', function () { cursor.classList.add('is-hover'); });
-      el.addEventListener('mouseleave', function () { cursor.classList.remove('is-hover'); });
-    });
     document.querySelectorAll('[data-magnetic]').forEach(function (el) {
       var strength = 0.32;
       el.addEventListener('mousemove', function (e) {

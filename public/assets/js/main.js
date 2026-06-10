@@ -262,4 +262,5 @@
       if (e.key === 'ArrowRight') show(idx + 1);
     });
   }
+
 })();

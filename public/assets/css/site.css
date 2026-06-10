@@ -238,6 +238,7 @@ body:has(#head){padding-top:calc(var(--tbh) + var(--hbh))}
 .faq__i{border-bottom:1px solid var(--line)}
 .faq__s{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:2rem;cursor:pointer;padding-block:1.35rem;font-family:var(--clash);font-weight:600;font-size:clamp(1.02rem,1.3vw,1.2rem);letter-spacing:-.008em}
 .faq__s::-webkit-details-marker{display:none}
+.faq__q{font:inherit;letter-spacing:inherit;margin:0}
 .faq__m{position:relative;flex:0 0 18px;width:18px;height:18px}
 .faq__m::before,.faq__m::after{content:"";position:absolute;background:var(--timber);transition:transform .4s var(--ease)}
 .faq__m::before{top:50%;left:0;width:100%;height:1.5px;transform:translateY(-50%)}
@@ -442,3 +443,23 @@ body:has(#head){padding-top:calc(var(--tbh) + var(--hbh))}
 .shero__media img{width:100%;height:clamp(10rem,26vh,16rem);object-fit:cover;display:block}
 .shero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(19,23,26,.4),transparent 35%)}
 
+/* ---------- Mid-page CTA band (CRO) ---------- */
+.ctaband{background:var(--iron-2);color:var(--paper);padding:clamp(2.2rem,4.5vw,3.4rem) 0;margin-block:clamp(2.5rem,5vw,4rem)}
+.ctaband__in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem 2rem}
+.ctaband__h{font-family:var(--clash);font-weight:600;font-size:clamp(1.2rem,1.9vw,1.6rem);letter-spacing:-.015em;margin:0}
+.ctaband__sub{color:var(--mist);font-size:.92rem;margin:.35rem 0 0}
+.ctaband__act{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
+/* ---------- Reviews (live from Google) ---------- */
+.rv{display:grid;gap:clamp(1.2rem,2.5vw,2rem)}
+@media(min-width:700px){.rv{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.rv{grid-template-columns:repeat(3,1fr)}}
+.rv__card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.3rem,2.5vw,1.8rem);display:grid;gap:.8rem;align-content:start}
+.rv__head{display:flex;align-items:center;gap:.8rem}
+.rv__ava{border-radius:50%;flex:0 0 auto}
+.rv__name{font-family:var(--clash);font-weight:600;font-size:.98rem}
+.rv__time{font-size:.78rem;color:var(--ink-soft)}
+.rv__stars{color:var(--timber);letter-spacing:.12em;font-size:.95rem}
+.rv__text{color:var(--ink-soft);font-size:.94rem;line-height:1.6}
+.rv__big{display:flex;align-items:center;gap:.6rem;font-size:1.1rem}
+.rv__big .rv__stars{font-size:1.2rem}
+.rv__empty{grid-column:1/-1;padding:clamp(2rem,4vw,3rem);border:1.5px dashed var(--line);border-radius:var(--r)}

@@ -80,12 +80,60 @@ async function handleContact(request, env) {
   return json({ success: true });
 }
 
+/* ---- Google reviews (Places API) ----
+   Required env vars to go live:
+     GOOGLE_PLACES_API_KEY — Google Cloud API key with Places API enabled (secret)
+     GOOGLE_PLACE_ID       — the ProCon LLC place ID from Google Business Profile
+   Until both are set, /api/reviews returns { configured:false } and the
+   reviews page shows its graceful fallback. Responses are edge-cached 6h. */
+async function handleReviews(request, env, ctx) {
+  const KEY = env.GOOGLE_PLACES_API_KEY;
+  const PLACE = env.GOOGLE_PLACE_ID;
+  if (!KEY || !PLACE) return json({ configured: false });
+
+  const cache = caches.default;
+  const cacheKey = new Request('https://cache.proconmn.com/api/reviews');
+  const hit = await cache.match(cacheKey);
+  if (hit) return hit;
+
+  const fields = 'rating,userRatingCount,googleMapsUri,reviews';
+  const resp = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(PLACE)}?fields=${fields}`, {
+    headers: { 'X-Goog-Api-Key': KEY },
+  });
+  if (!resp.ok) return json({ configured: true, error: 'Could not load reviews right now.' }, 502);
+  const place = await resp.json();
+
+  const body = {
+    configured: true,
+    rating: place.rating || null,
+    count: place.userRatingCount || 0,
+    url: place.googleMapsUri || null,
+    reviews: (place.reviews || []).map((r) => ({
+      author: r.authorAttribution?.displayName || 'Google user',
+      photo: r.authorAttribution?.photoUri || null,
+      rating: r.rating || null,
+      time: r.relativePublishTimeDescription || '',
+      text: r.text?.text || r.originalText?.text || '',
+    })),
+  };
+  const out = new Response(JSON.stringify(body), {
+    headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=21600' },
+  });
+  ctx.waitUntil(cache.put(cacheKey, out.clone()));
+  return out;
+}
+
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === '/api/contact') {
       return request.method === 'POST'
         ? handleContact(request, env)
+        : json({ success: false, message: 'Method not allowed.' }, 405);
+    }
+    if (url.pathname === '/api/reviews') {
+      return request.method === 'GET'
+        ? handleReviews(request, env, ctx)
         : json({ success: false, message: 'Method not allowed.' }, 405);
     }
     // Everything else is a static asset.

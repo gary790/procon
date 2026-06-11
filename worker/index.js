@@ -116,7 +116,7 @@ function buildConfirmationEmail({ first, project, city }) {
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ProCon LLC</title></head>
 <body style="margin:0;padding:0;background:#F3F0E9">
-  <div style="display:none;max-height:0;overflow:hidden;mso-hide:all">Your estimate request is in — Dan will reach out within one business day, usually sooner.</div>
+  <div style="display:none;max-height:0;overflow:hidden;mso-hide:all">Your estimate request is in — it's gone straight to Dan's desk.</div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F0E9">
     <tr><td align="center" style="padding:32px 16px">
       <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%">
@@ -141,7 +141,7 @@ function buildConfirmationEmail({ first, project, city }) {
         <!-- Body card -->
         <tr><td style="background:#FFFFFF;padding:36px 40px 8px">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#13171A;margin:0 0 18px">
-            Thank you for reaching out to <strong>ProCon LLC</strong>. We've received your request ${projectLine}, and <strong>you'll hear from us within one business day</strong> — usually the same day during business hours.
+            Thank you for reaching out to <strong>ProCon LLC</strong>. We've received your request ${projectLine}, and <strong>it's gone straight to Dan's desk</strong> — he personally reviews every request, no call center in between.
           </p>
 
           <!-- What happens next -->

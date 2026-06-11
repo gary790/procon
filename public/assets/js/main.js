@@ -200,7 +200,10 @@
         else if (code >= 1 && code <= 3) sky = 'cloudy';
         else if (code >= 95) sky = 'storming';
         var line = (t <= 20) ? 'We build anyway.' : (t <= 40 ? 'Good building weather, by our standards.' : 'A fine day to pour footings.');
-        wx.innerHTML = '<i aria-hidden="true"></i><b>' + t + '\u00B0F</b> in Duluth right now \u2014 ' + sky + '. ' + line;
+        var small = window.matchMedia && window.matchMedia('(max-width: 759px)').matches;
+        wx.innerHTML = small
+          ? '<i aria-hidden="true"></i><b>' + t + '\u00B0F</b>&nbsp; Duluth \u2014 ' + sky + '. ' + line
+          : '<i aria-hidden="true"></i><b>' + t + '\u00B0F</b> in Duluth right now \u2014 ' + sky + '. ' + line;
         wx.classList.add('is-live');
       })
       .catch(function () { /* widget stays with its static fallback text */ });

@@ -40,7 +40,10 @@
   <!-- Self-hosted type -->
   <link rel="preload" href="/assets/fonts/ClashDisplay-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Switzer-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/img/hero-custom-home-drone-duluth-mn.jpg" as="image" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp"
+        href="/assets/img/hero-custom-home-drone-duluth-mn-1280.webp"
+        imagesrcset="/assets/img/hero-custom-home-drone-duluth-mn-1280.webp 1280w, /assets/img/hero-custom-home-drone-duluth-mn-1600.webp 1600w, /assets/img/hero-custom-home-drone-duluth-mn.webp 1920w"
+        imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260610k">
   <!-- SHARED HEAD END -->
 
@@ -150,8 +153,13 @@
     <!-- ============ HERO ============ -->
     <section id="hero" class="hero">
       <div class="hero__photo" aria-hidden="true">
-        <img src="/assets/img/hero-custom-home-drone-duluth-mn.jpg"
-             alt="" width="1920" height="1071" fetchpriority="high" decoding="async">
+        <picture>
+          <source type="image/webp"
+                  srcset="/assets/img/hero-custom-home-drone-duluth-mn-1280.webp 1280w, /assets/img/hero-custom-home-drone-duluth-mn-1600.webp 1600w, /assets/img/hero-custom-home-drone-duluth-mn.webp 1920w"
+                  sizes="100vw">
+          <img src="/assets/img/hero-custom-home-drone-duluth-mn.jpg"
+               alt="" width="1920" height="1071" fetchpriority="high" decoding="async">
+        </picture>
       </div>
 
       <div class="wrap hero__wrap">

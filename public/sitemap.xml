@@ -5,7 +5,7 @@
   <url><loc>https://www.proconmn.com/</loc><lastmod>2026-06-09</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.proconmn.com/services</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.proconmn.com/about</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.proconmn.com/gallery</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
+  <url><loc>https://www.proconmn.com/gallery</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
     <image:image><image:loc>https://www.proconmn.com/assets/img/hero-custom-home-drone-duluth-mn.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.proconmn.com/assets/img/custom-home-winter-dusk-duluth-mn.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.proconmn.com/assets/img/kitchen-remodel-duluth-mn.jpg</image:loc></image:image>
@@ -19,6 +19,18 @@
     <image:image><image:loc>https://www.proconmn.com/assets/img/modern-duplex-duluth-mn.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.proconmn.com/assets/img/house-framing-construction-mn.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.proconmn.com/assets/img/bedroom-addition-interior-mn.jpg</image:loc></image:image>
+  </url>
+  <url><loc>https://www.proconmn.com/gallery/island-lake</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-hero.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-thermally-modified-wood-deck.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-wood-entry-black-siding.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-black-gable-exterior.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-great-room-vaulted-ceiling.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-living-room-lake-view.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-deck-steps.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-wraparound-deck-corner.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-peaked-window-lake-view.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.proconmn.com/assets/img/projects/island-lake/island-lake-wood-eave-golden-hour.jpg</image:loc></image:image>
   </url>
   <url><loc>https://www.proconmn.com/contact</loc><lastmod>2026-06-09</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.proconmn.com/services/custom-home-construction</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>

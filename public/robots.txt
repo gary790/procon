@@ -4,6 +4,7 @@
 # Standard search engines
 User-agent: *
 Allow: /
+Disallow: /cdn-cgi/
 
 # OpenAI ChatGPT
 User-agent: GPTBot

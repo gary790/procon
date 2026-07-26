@@ -55,4 +55,3 @@ User-agent: Amazonbot
 Allow: /
 
 Sitemap: https://www.proconmn.com/sitemap.xml
-Sitemap: https://www.proconmn.com/llms.txt

@@ -14,16 +14,35 @@
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } });
 const esc = (s) => String(s).replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
-const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
+// Plain addr-spec only. RFC-5322 display-name forms ("Dan <a@b.co>", "<a@b.co>")
+// must not pass: this value becomes reply_to and the confirmation recipient.
+const isEmail = (s) =>
+  s.length <= 254 && /^[^\s@<>,;:"()[\]\\]+@[^\s@<>,;:"()[\]\\]+\.[A-Za-z]{2,}$/.test(s);
+
+/* The project_type values the contact form actually offers. Anything else is
+   either a stale client or someone hand-crafting a request — reject it rather
+   than relay attacker-chosen text out of our DKIM-signed domain. */
+const PROJECT_TYPES = new Set([
+  'Custom Home', 'Home Addition', 'Deck', 'Kitchen Remodel', 'Bathroom Remodel',
+  'Garage / Outbuilding', 'Duplex / Multi-Family', 'Vacation Home',
+  'Exterior Upgrade', 'Windows & Doors', 'Not sure yet',
+]);
 
 /* Full name: at least two words (first + last), each 2+ chars, real-name
    characters only (letters incl. accents, hyphens, apostrophes, periods). */
 const isFullName = (s) => {
-  if (s.length < 5 || s.length > 80) return false;
+  if (s.length < 4 || s.length > 80) return false;
   if (/https?:\/\/|www\.|[<>{}\[\]@#$%^*_=+~|\\\/0-9]/.test(s)) return false;
   const parts = s.split(/\s+/).filter(Boolean);
   if (parts.length < 2) return false;
-  return parts.every((p) => /^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ'.-]+$/.test(p) && p.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ]/g, '').length >= 2);
+  // A token is letters, optionally carrying an apostrophe (straight or the
+  // curly one iOS auto-substitutes), hyphen, or period: O'Brien, O’Brien,
+  // Smith-Jones, J. — a lone initial is a valid middle name.
+  const token = /^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ'’.-]*$/;
+  if (!parts.every((p) => token.test(p))) return false;
+  const letters = (p) => p.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ]/g, '').length;
+  // Surname must be a real word; first name may be an initial.
+  return letters(parts[parts.length - 1]) >= 2 && letters(parts[0]) >= 1;
 };
 
 /* Valid US phone (NANP): 10 digits after stripping an optional leading 1;
@@ -43,8 +62,8 @@ const usPhone = (s) => {
 /* Spam heuristics on the free-text message. */
 const looksSpammy = (msg) => {
   const links = (msg.match(/https?:\/\/|www\./gi) || []).length;
-  if (links > 0) return true;                          // contractors call, they don't link
-  if (/\b(SEO|backlinks?|crypto|bitcoin|loan|viagra|casino|porn|escort|followers|ranking on google|web design services|boost your)\b/i.test(msg)) return true;
+  if (links > 1) return true;                          // one link is normal (Houzz/Pinterest inspo); a list of them is not
+  if (/\b(SEO|backlinks?|crypto|bitcoin|viagra|casino|porn|escort|followers|ranking on google|web design services|boost your)\b/i.test(msg)) return true;
   if (/[\u0400-\u04FF\u4E00-\u9FFF]/.test(msg)) return true; // Cyrillic/CJK blocks
   return false;
 };
@@ -208,10 +227,14 @@ async function handleContact(request, env) {
     else { const fd = await request.formData(); fd.forEach((v, k) => { d[k] = v; }); }
   } catch { return json({ success: false, message: 'Bad request.' }, 400); }
 
+  // A body of `null`/`"x"`/`[]` parses fine but is not an object, so every
+  // property read below would throw and surface Cloudflare's raw 1101 page.
+  if (!d || typeof d !== 'object' || Array.isArray(d))
+    return json({ success: false, message: 'Bad request.' }, 400);
+
   if (d.botcheck) return json({ success: true }); // honeypot
 
   const ip = request.headers.get('cf-connecting-ip') || '';
-  if (rateLimited(ip)) return json({ success: false, message: 'Too many requests — please call us instead.' }, 429);
 
   const name = (d.name || '').toString().trim().replace(/\s+/g, ' ');
   const email = (d.email || '').toString().trim();
@@ -227,12 +250,16 @@ async function handleContact(request, env) {
   const cleanPhone = usPhone(phone);
   if (!cleanPhone)
     return json({ success: false, message: 'Please enter a valid US phone number.' }, 422);
-  if (!project || project.length > 60)
-    return json({ success: false, message: 'Please complete the required fields.' }, 422);
+  if (!PROJECT_TYPES.has(project))
+    return json({ success: false, message: 'Please choose a project type from the list.' }, 422);
   if (city.length > 80 || message.length > 4000)
     return json({ success: false, message: 'Please complete the required fields.' }, 422);
   if (looksSpammy(message) || looksSpammy(city))
     return json({ success: false, message: 'Your message could not be sent. Please call us at (218) 348-2076.' }, 422);
+
+  // Charged only once the submission is otherwise valid, so a customer fixing a
+  // typo can't lock themselves out.
+  if (rateLimited(ip)) return json({ success: false, message: 'Too many requests — please call us instead.' }, 429);
 
   const tsOK = await verifyTurnstile((d['cf-turnstile-response'] || d.turnstile || '').toString(), ip, env);
   if (!tsOK)
@@ -260,13 +287,18 @@ async function handleContact(request, env) {
     `<hr style="border:none;border-top:1px solid #ddd;margin:18px 0">` +
     `<p style="color:#666;font-size:13px">Sent from the contact form at proconmn.com</p></div>`;
 
+  // Collapse control chars (CR/LF especially) before they reach a mail header.
+  const hdr = (s) => s.replace(/[\u0000-\u001F\u007F]+/g, ' ').replace(/\s+/g, ' ').trim();
+
   const leadResp = await send({
     from: FROM, to: [TO], reply_to: email,
-    subject: `New estimate request — ${name}${city ? ' (' + city + ')' : ''}`, html: leadHtml,
+    subject: hdr(`New estimate request — ${name}${city ? ' (' + city + ')' : ''}`), html: leadHtml,
   });
   if (!leadResp.ok) {
+    // Log the upstream reason for us; never hand it to an unauthenticated caller.
     const detail = await leadResp.text().catch(() => '');
-    return json({ success: false, message: 'We could not send your request. Please call us.', detail }, 502);
+    console.error('resend lead send failed', leadResp.status, detail);
+    return json({ success: false, message: 'We could not send your request. Please call us at (218) 348-2076.' }, 502);
   }
 
   const first = (name.split(/\s+/)[0] || name);
@@ -293,11 +325,19 @@ async function handleReviews(request, env, ctx) {
   if (hit) return hit;
 
   const fields = 'rating,userRatingCount,googleMapsUri,reviews';
-  const resp = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(PLACE)}?fields=${fields}`, {
-    headers: { 'X-Goog-Api-Key': KEY },
-  });
-  if (!resp.ok) return json({ configured: true, error: 'Could not load reviews right now.' }, 502);
-  const place = await resp.json();
+  let place;
+  try {
+    const resp = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(PLACE)}?fields=${fields}`, {
+      headers: { 'X-Goog-Api-Key': KEY },
+    });
+    if (!resp.ok) return json({ configured: true, error: 'Could not load reviews right now.' }, 502);
+    place = await resp.json();
+  } catch (err) {
+    // A network failure or malformed JSON must not surface as a 1101 Worker
+    // exception page; the reviews page has a graceful fallback for this shape.
+    console.error('places fetch failed', err);
+    return json({ configured: true, error: 'Could not load reviews right now.' }, 502);
+  }
 
   const body = {
     configured: true,
@@ -322,8 +362,12 @@ async function handleReviews(request, env, ctx) {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    // Canonical host: redirect apex -> www (301, preserves path + query).
-    if (url.hostname === 'proconmn.com') {
+    // Canonical origin: redirect apex -> www AND http -> https (301, preserves
+    // path + query). The hostname guard keeps `wrangler dev` on http://localhost
+    // from redirect-looping to an https localhost that isn't listening.
+    const isProconHost = url.hostname === 'proconmn.com' || url.hostname === 'www.proconmn.com';
+    if (isProconHost && (url.hostname === 'proconmn.com' || url.protocol === 'http:')) {
+      url.protocol = 'https:';
       url.hostname = 'www.proconmn.com';
       return Response.redirect(url.toString(), 301);
     }

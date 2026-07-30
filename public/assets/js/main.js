@@ -14,13 +14,22 @@
   // Anchor links route through Lenis (with sticky-header offset)
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      var id = a.getAttribute('href');
-      if (id.length < 2) return;
-      var el = document.querySelector(id);
+      // The href may have been rewritten after this listener was bound — the
+      // obfuscated "Email us" links become mailto:, which querySelector throws on.
+      var id = a.getAttribute('href') || '';
+      if (id.charAt(0) !== '#' || id.length < 2) return;
+      var el;
+      try { el = document.querySelector(id); } catch (_) { return; }
       if (!el) return;
       e.preventDefault();
       if (lenis) lenis.scrollTo(el, { offset: -90 });
       else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+      // Scrolling alone leaves keyboard focus behind, so "Skip to content" would
+      // dump the user back into the header on their next Tab. Move focus too.
+      if (!el.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(el.tagName)) {
+        el.setAttribute('tabindex', '-1');
+      }
+      try { el.focus({ preventScroll: true }); } catch (_) { el.focus(); }
     });
   });
 
@@ -59,9 +68,26 @@
     if (lenis) { open ? lenis.stop() : lenis.start(); }
   }
   if (burger && drawer) {
-    burger.addEventListener('click', function () { setDrawer(!drawer.classList.contains('is-open')); });
+    burger.addEventListener('click', function () {
+      var open = !drawer.classList.contains('is-open');
+      setDrawer(open);
+      if (open) { var f = drawer.querySelector('a, button'); if (f) f.focus(); }
+      else burger.focus();
+    });
     drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setDrawer(false); }); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setDrawer(false); });
+    document.addEventListener('keydown', function (e) {
+      if (!drawer.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { setDrawer(false); burger.focus(); return; }
+      // Keep Tab inside the open drawer, and out of the page behind it.
+      if (e.key === 'Tab') {
+        var f = drawer.querySelectorAll('a, button');
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        else if (!drawer.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      }
+    });
   }
 
   /* ---- FAQ: single open ---- */
@@ -103,17 +129,26 @@
   if (form) {
     var required = ['name', 'email', 'phone', 'project'];
     var fieldOf = { name: 'f-name', email: 'f-email', phone: 'f-phone', project: 'f-type' };
-    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    // Kept deliberately in lockstep with worker/index.js \u2014 if this is looser the
+    // server 422s a submission the customer was told was fine.
+    var emailRe = /^[^\s@<>,;:"()[\]\\]+@[^\s@<>,;:"()[\]\\]+\.[A-Za-z]{2,}$/;
+    var NAME_START = 'A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF';
+    var nameToken = new RegExp('^[' + NAME_START + '][' + NAME_START + "'\u2019.-]*$");
 
+    function nameLetters(p) {
+      return p.replace(new RegExp('[^' + NAME_START + ']', 'g'), '').length;
+    }
     function isFullName(v) {
       v = v.replace(/\s+/g, ' ').trim();
-      if (v.length < 5) return false;
+      if (v.length < 4 || v.length > 80) return false;
+      if (/https?:\/\/|www\.|[<>{}\[\]@#$%^*_=+~|\\\/0-9]/.test(v)) return false;
       var parts = v.split(' ');
       if (parts.length < 2) return false;
       for (var i = 0; i < parts.length; i++) {
-        if (!/^[A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF'.-]+$/.test(parts[i])) return false;
+        if (!nameToken.test(parts[i])) return false;   // allows O'Brien, O\u2019Brien, Mary-Jane, J.
       }
-      return true;
+      // Surname must be a real word; a first/middle initial is fine.
+      return nameLetters(parts[parts.length - 1]) >= 2 && nameLetters(parts[0]) >= 1;
     }
     function isUSPhone(v) {
       var dg = v.replace(/\D/g, '');
@@ -134,6 +169,15 @@
       if (id === 'email') ok = emailRe.test(v);
       if (id === 'phone') ok = isUSPhone(v);
       field.classList.toggle('field--error', !ok);
+      // The red border and the .err text were visual-only; link them to the input
+      // so screen readers announce which field failed and why.
+      var err = field.querySelector('.err');
+      if (err) {
+        if (!err.id) err.id = fieldOf[id] + '-err';
+        if (input.getAttribute('aria-describedby') !== err.id) input.setAttribute('aria-describedby', err.id);
+      }
+      if (ok) input.removeAttribute('aria-invalid');
+      else input.setAttribute('aria-invalid', 'true');
       return ok;
     }
     required.forEach(function (id) {
@@ -172,14 +216,38 @@
               } catch (_) {}
             }
             window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: reduce ? 'auto' : 'smooth' });
+            // .form__body (holding the focused submit button) is display:none'd on
+            // success, which drops focus to the top of the document. Move it to
+            // the confirmation so it is announced and keyboard order survives.
+            var okPanel = form.querySelector('.form__ok');
+            if (okPanel) {
+              okPanel.setAttribute('tabindex', '-1');
+              okPanel.setAttribute('role', 'status');
+              try { okPanel.focus({ preventScroll: true }); } catch (_) { okPanel.focus(); }
+            }
           }
-          else { throw new Error('send failed'); }
+          else {
+            var err = new Error('send failed');
+            // Carry the Worker's specific reason ("Please choose a project type
+            // from the list.", "Too many requests…") instead of discarding it.
+            err.serverMessage = (res.d && typeof res.d.message === 'string') ? res.d.message : '';
+            throw err;
+          }
         })
-        .catch(function () {
+        .catch(function (err) {
           if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.firstChild.textContent = 'Request an Estimate'; }
           if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
           var note = form.querySelector('.form__note');
-          if (note) note.innerHTML = 'Something went wrong sending that. Please call <a href="tel:+12183482076" class="ulink">(218) 348-2076</a> or email us directly.';
+          if (!note) return;
+          var msg = (err && err.serverMessage) || 'Something went wrong sending that.';
+          // textContent (not innerHTML) so a server string can never inject markup.
+          note.textContent = msg + ' ';
+          var tel = document.createElement('a');
+          tel.href = 'tel:+12183482076'; tel.className = 'ulink'; tel.textContent = '(218) 348-2076';
+          note.appendChild(document.createTextNode('Or call '));
+          note.appendChild(tel);
+          note.appendChild(document.createTextNode('.'));
+          note.setAttribute('role', 'alert');
         });
     });
   }
@@ -240,6 +308,7 @@
       after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
       handle.style.left = pct + '%';
       ba.setAttribute('aria-valuenow', String(Math.round(pct)));
+      ba.setAttribute('aria-valuetext', Math.round(pct) + '% of the after photo shown');
     }
     ba.addEventListener('pointerdown', function (e) { dragging = true; ba.setPointerCapture(e.pointerId); setPos(e.clientX); });
     ba.addEventListener('pointermove', function (e) { if (dragging) setPos(e.clientX); });
@@ -248,8 +317,13 @@
     // Keyboard support
     ba.setAttribute('tabindex', '0');
     ba.setAttribute('role', 'slider');
-    ba.setAttribute('aria-label', 'Before and after comparison');
+    // role="slider" makes this a leaf node, so the two <img> alts drop out of the
+    // accessibility tree entirely. Fold them into the slider's own name.
+    var baAlts = [];
+    ba.querySelectorAll('img').forEach(function (im) { if (im.alt) baAlts.push(im.alt); });
+    ba.setAttribute('aria-label', 'Before and after comparison slider' + (baAlts.length ? '. ' + baAlts.join('. ') : ''));
     ba.setAttribute('aria-valuemin', '0'); ba.setAttribute('aria-valuemax', '100'); ba.setAttribute('aria-valuenow', '50');
+    ba.setAttribute('aria-valuetext', '50% of the after photo shown');
     ba.addEventListener('keydown', function (e) {
       var now = parseFloat(ba.getAttribute('aria-valuenow')) || 50;
       if (e.key === 'ArrowLeft') { e.preventDefault(); var r1 = ba.getBoundingClientRect(); setPos(r1.left + r1.width * (now - 4) / 100); }
@@ -289,17 +363,42 @@
       lImg.src = items[idx].src; lImg.alt = items[idx].alt;
       lCap.textContent = items[idx].cap;
     }
-    function openL(i) { show(i); lbox.classList.add('is-open'); document.documentElement.style.overflow = 'hidden'; if (lenis) lenis.stop(); }
-    function closeL() { lbox.classList.remove('is-open'); document.documentElement.style.overflow = ''; if (lenis) lenis.start(); }
-    lbox.querySelector('.lbox__x').addEventListener('click', closeL);
+    var lastFocus = null;
+    var closeBtn = lbox.querySelector('.lbox__x');
+    function openL(i) {
+      lastFocus = document.activeElement;
+      show(i); lbox.classList.add('is-open');
+      document.documentElement.style.overflow = 'hidden'; if (lenis) lenis.stop();
+      // aria-modal is a promise to the AT that focus lives inside the dialog.
+      closeBtn.focus();
+    }
+    function closeL() {
+      lbox.classList.remove('is-open');
+      document.documentElement.style.overflow = ''; if (lenis) lenis.start();
+      // Return focus to the thumbnail the user opened, not the top of the page.
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        try { lastFocus.focus({ preventScroll: true }); } catch (_) { lastFocus.focus(); }
+      }
+      lastFocus = null;
+    }
+    closeBtn.addEventListener('click', closeL);
     lbox.querySelector('.lbox__prev').addEventListener('click', function () { show(idx - 1); });
     lbox.querySelector('.lbox__next').addEventListener('click', function () { show(idx + 1); });
     lbox.addEventListener('click', function (e) { if (e.target === lbox) closeL(); });
     document.addEventListener('keydown', function (e) {
       if (!lbox.classList.contains('is-open')) return;
-      if (e.key === 'Escape') closeL();
+      if (e.key === 'Escape') { closeL(); return; }
       if (e.key === 'ArrowLeft') show(idx - 1);
       if (e.key === 'ArrowRight') show(idx + 1);
+      // Keep Tab inside the dialog while it is open.
+      if (e.key === 'Tab') {
+        var f = lbox.querySelectorAll('button');
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        else if (!lbox.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      }
     });
   }
 

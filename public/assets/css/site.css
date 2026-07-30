@@ -19,6 +19,7 @@
   --ink:#13171A; --ink-soft:#585C5C;
   --mist:rgba(243,240,233,.64); --mist-2:rgba(243,240,233,.58);
   --timber:#B07A37; --timber-text:#8A5C1C;            /* warm accent — eyebrows, rules, mark */
+  --focus:#2C6E8A;             /* focus ring — 4.98:1 on paper (dark surfaces override) */
   --superior:#8FB7C8;          /* cold North-Shore accent — rare pop */
   --line:rgba(19,23,26,.14);
   --line-d:rgba(243,240,233,.16);
@@ -42,7 +43,7 @@ img,svg,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ::selection{background:var(--ink);color:var(--paper)}
-:focus-visible{outline:2px solid var(--superior);outline-offset:3px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
 
 /* ---------- Type ---------- */
 h1,h2,h3,h4{font-family:var(--clash);font-weight:600;line-height:.98;letter-spacing:-.02em}
@@ -59,6 +60,12 @@ h1,h2,h3,h4{font-family:var(--clash);font-weight:600;line-height:.98;letter-spac
 /* ---------- Layout ---------- */
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);width:100%}
 .section{padding-block:clamp(4rem,9vh,7.5rem)}
+/* Dark surfaces re-point the accent tokens at values that clear WCAG on
+   #13171A. The light-background gold (--timber-text #8A5C1C) is only 3.11:1
+   there, and the sky focus ring is only 1.89:1 on paper — each needs the other
+   surface's value. Redefining the custom properties fixes every descendant
+   (.eyebrow, .spec__k, .work__tag, .hubgrid .go, .rv__stars, focus rings…). */
+.on-iron,.hero,.shero,.foot{--timber-text:#B07A37;--focus:var(--superior)}
 .on-iron{background:var(--iron);color:var(--paper)}
 .on-iron .eyebrow{color:var(--superior)}
 .on-iron .eyebrow::before,.on-iron .eyebrow--center::after{background:var(--superior)}
@@ -115,6 +122,9 @@ body:has(#head){padding-top:calc(var(--tbh) + var(--hbh))}
 .topbar__mail:hover{color:var(--paper)}
 .topbar__cta{background:var(--timber);color:var(--ink);font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:.4rem 1.05rem;white-space:nowrap;transition:filter .3s}
 .topbar__cta:hover{filter:brightness(1.14)}
+/* Below 360px the nowrap phone number and the nowrap CTA pill collide. The
+   phone number wins — there is already a sticky Free Estimate button in .mbar. */
+@media(max-width:359px){.topbar__cta{display:none}}
 @media(min-width:760px){.topbar__tag{display:block}}
 @media(min-width:1100px){.topbar__mail{display:inline}}
 .headbar{background:#fff;color:var(--iron);border-bottom:1px solid var(--line);box-shadow:0 1px 10px rgba(10,12,14,.05);transition:box-shadow .4s}
@@ -209,12 +219,14 @@ body:has(#head){padding-top:calc(var(--tbh) + var(--hbh))}
 .gal img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;max-height:19rem;transition:transform 1.1s var(--ease)}
 .gal figure:hover img{transform:scale(1.035)}
 .gal figcaption{display:grid;gap:.35rem;padding-right:.5rem}
-.gal figcaption .tag{font-family:var(--switzer);font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--timber-text)}
+/* Standalone so it also styles the featured-project card outside .gal. */
+.tag{font-family:var(--switzer);font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--timber-text)}
 .gal figcaption .cap{font-size:.92rem;line-height:1.55;color:var(--ink-soft);max-width:44ch}
 .on-iron .gal figcaption .tag{color:var(--superior)}
 .on-iron .gal figcaption .cap{color:var(--mist)}
-.gal--wide img{aspect-ratio:21/9}
-@media(min-width:640px){.gal{grid-template-columns:repeat(2,1fr)}.gal--wide{grid-column:1/-1}}
+/* 21:9 only once .gal--wide actually spans the grid. In the single-column
+   mobile layout it would crop a featured photo to a ~170px letterbox strip. */
+@media(min-width:640px){.gal{grid-template-columns:repeat(2,1fr)}.gal--wide{grid-column:1/-1}.gal--wide img{aspect-ratio:21/9}}
 @media(min-width:1100px){.gal{grid-template-columns:repeat(3,1fr)}}
 .gal--wide img{max-height:22rem}
 .gal--wide figcaption .cap{max-width:64ch}
@@ -288,7 +300,9 @@ body:has(#head){padding-top:calc(var(--tbh) + var(--hbh))}
 
 /* ---------- Sticky mobile bar ---------- */
 .mbar{position:fixed;inset:auto 0 0;z-index:40;display:flex;gap:.7rem;padding:.7rem;background:var(--paper);border-top:1px solid var(--line)}
-.mbar .btn{flex:1;justify-content:center;padding-block:.95rem}
+/* .btn's 1.7rem side padding makes "Free Estimate" wrap (and the fixed bar grow
+   to ~105px, eating the viewport) on narrow phones — two buttons cannot fit it. */
+.mbar .btn{flex:1;justify-content:center;padding-block:.95rem;padding-inline:.7rem;white-space:nowrap}
 @media(min-width:1024px){.mbar{display:none}}
 
 /* utilities */

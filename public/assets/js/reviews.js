@@ -3,11 +3,17 @@
   var grid = document.getElementById('rv-grid');
   var summ = document.getElementById('rv-summary');
   var foot = document.getElementById('rv-foot');
-  function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+  // Escapes for both text and attribute contexts (innerHTML leaves quotes as-is,
+  // and these values are interpolated into src="..." / href="...").
+  function esc(s) {
+    var d = document.createElement('div'); d.textContent = s || '';
+    return d.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
   function stars(n) {
     var out = '';
     for (var i = 1; i <= 5; i++) out += i <= Math.round(n) ? '\u2605' : '\u2606';
-    return '<span class="rv__stars" aria-label="' + n + ' out of 5 stars">' + out + '</span>';
+    // role="img" is required for the aria-label to be exposed on a bare span.
+    return '<span class="rv__stars" role="img" aria-label="' + n + ' out of 5 stars">' + out + '</span>';
   }
   function fallback() {
     grid.innerHTML =
@@ -34,7 +40,15 @@
         '</article>';
     }).join('');
     if (d.url) foot.innerHTML = '<a class="btn btn--ghost" href="' + esc(d.url) + '" rel="noopener" target="_blank">Read all reviews on Google</a>';
-    if (window.__reattachReveals) window.__reattachReveals();
-    else grid.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('in'); });
+    // These cards are injected after main.js captured its reveal list, so they
+    // are never observed — reveal them here. The class is 'is-in' (site.css);
+    // adding it on the next frame lets the opacity:0 start state paint first so
+    // the cards fade in staggered instead of popping.
+    requestAnimationFrame(function () {
+      grid.querySelectorAll('[data-reveal]').forEach(function (el, i) {
+        el.style.setProperty('--rd', (i * 90) + 'ms');
+        el.classList.add('is-in');
+      });
+    });
   }).catch(fallback);
 })();

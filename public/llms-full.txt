@@ -50,7 +50,7 @@ A: Yes. We build additions worked into your existing home — extra bedrooms, ba
 
 Custom home construction, additions, remodeling, decks, and garages across Northern Minnesota. See all 10 of ProCon's services — owner-led, licensed, free estimates .
 
-H1: Everything we build,from the footings up.
+H1: Everything we build, from the footings up.
 
 - ProCon handles custom home construction and remodeling across Northern Minnesota — ten distinct trades, one owner on site for all of them. Here's the full lineup.
 - Whatever the project, the arrangement is the same: Dan Bruckelmyer quotes it, plans it, and is on site while it's built. No handoff to a crew you never met, no project manager between you and the person making decisions. It's how ProCon has worked since 1997.
@@ -371,7 +371,7 @@ A: Yes. ProCon is licensed in Minnesota under #QB807406 and insured, Dan Bruckel
 
 Window and door installation in Duluth, MN — old units pulled, openings flashed and air-sealed right, trimmed to match the house. Free written estimate.
 
-H1: Set tight, flashed right,warmer all winter.
+H1: Set tight, flashed right, warmer all winter.
 
 - Replacement windows and exterior doors in Duluth and across Northern Minnesota — old units pulled, every opening flashed and air-sealed in the right order, then trimmed to match the house. The way a window stops leaking heat is the install, not the sticker.
 - Drafty old windows and doors bleed heat all winter, and the cause is usually hiding behind the trim: an opening that was never flashed right the first time. A new unit set into a bad opening leaks just as much as the old one — the gap behind the trim is where the cold comes in.
@@ -451,7 +451,7 @@ A: We're a Duluth company, so we're local to every Duluth project. Estimates are
 
 Custom home construction, additions, and remodeling in Hermantown, MN — owner-led by Dan Bruckelmyer. We build for the heavier snow load at elevation and the room a bigger lot gives you. Free written estimates.
 
-H1: Higher ground,deeper snow, room to build.
+H1: Higher ground, deeper snow, room to build.
 
 - Custom home construction, additions, and remodeling up the hill in Hermantown — where the lots are bigger, the snow piles deeper, and a builder who knows the elevation sizes the roof for what actually lands here.
 - Hermantown sits northwest of Duluth and uphill from the lakeshore, and that extra elevation changes the job. The town pulls down notably more snow than downtown Duluth does, so roof load and drifting stop being a footnote and become a number you design around — pitch, framing, and bracing all sized for the weight that piles up at this height.
@@ -513,7 +513,7 @@ A: Yes. Cloquet sits on the St. Louis River, and a riverside lot means paying at
 
 Custom home construction, lake homes, and remodeling in Two Harbors, MN — owner-led by Dan Bruckelmyer. We engineer foundations to North Shore bedrock and build for Lake Superior exposure. Free written estimates.
 
-H1: On the North Shore,you build to the rock.
+H1: On the North Shore, you build to the rock.
 
 - Custom homes, lake homes, and remodeling in Two Harbors and up the Shore — where the foundation gets engineered to bedrock and the envelope gets built for whatever Lake Superior sends off the water.
 - Two Harbors sits about thirty minutes northeast of Duluth up Highway 61, right on the lake at Agate Bay — the ore docks, the lighthouse, deep water within sight of most of town. The thing that decides a build here isn't soil type the way it is inland. Many lots sit on or near exposed bedrock, so you don't always dig a standard frost footing — you engineer the foundation to the rock and figure out how the house bears on the ledge.
@@ -575,7 +575,7 @@ A: We match the existing pitch, eave depth, siding reveal, and window proportion
 
 Custom home construction, additions with real saunas, and remodeling in Esko, MN — owner-led by Dan Bruckelmyer. Built for larger Thomson Township lots, 15 minutes from our Duluth base. Free written estimates.
 
-H1: Sauna country,room to build.
+H1: Sauna country, room to build.
 
 - In a Finnish-heritage community where the sauna has always been part of the house and the lots run wide and rural, we build custom homes, additions, and remodels with the heat room done right — not dropped in as an afterthought.
 - Esko grew up as a Finnish farming community in Thomson Township, and that heritage still shows up in how people here think about a home. The sauna isn't a spa upgrade — it's expected, the way a mudroom is expected. When a family in Esko adds on or builds new, the heat room is usually in the plan from the first sketch, and it has to be built like one: real framing, vapor barrier, ventilation, and a heater wired for it.
@@ -606,7 +606,7 @@ A: About 15 minutes southwest down the highway. Esko is one of the closest commu
 
 Garages, additions, and remodeling for Hibbing, MN's mining-era homes on the Iron Range — owner-led by Dan Bruckelmyer. Free estimate.
 
-H1: Built for theIron Range.
+H1: Built for the Iron Range.
 
 - Garages, additions, and remodeling for Hibbing's boom-era homes — houses that have already stood a century of Range winters and deserve work that will stand the next one.
 - Hibbing is the town that literally moved for mining — starting in 1919, hundreds of buildings were hauled two miles south so the Hull-Rust-Mahoning pit could expand into what's now called the Grand Canyon of the North. The houses that line Howard Street and the residential blocks south of it mostly date to that relocation boom: sturdy, mining-company-era homes that were built fast but built to last.
@@ -668,7 +668,7 @@ A: Most run 8–12 months like our other custom builds, though seasonal access o
 
 Additions, garages, and remodeling for Virginia, MN's early-1900s Iron Range homes — owner-led by Dan Bruckelmyer. Free estimate.
 
-H1: The Queen City,kept solid.
+H1: The Queen City, kept solid.
 
 - Additions, garages, and remodeling for Virginia's century-old Range homes — work that respects what the mining boom built and brings it up to how people live now.
 - Virginia earned its Queen City nickname in the early-1900s ore boom — and it had to earn it twice, because fire leveled the young city and it was rebuilt more solidly the second time. That history shows in the housing stock around Silver Lake and Bailey's Lake: tall, narrow, early-twentieth-century homes with full basements, steep roofs, and the kind of old-growth lumber you can't buy anymore.
@@ -699,7 +699,7 @@ A: Usually, yes. Many of Virginia's residential blocks have alley access, which 
 
 ProCon is owner-led by Dan Bruckelmyer, in construction since 1997. A family-operated custom home builder in Duluth, MN — licensed (#QB807406), insured, with a workmanship guarantee.
 
-H1: One builder,on the job since 1997.
+H1: One builder, on the job since 1997.
 
 - ProCon is Dan Bruckelmyer — a family-operated custom home builder in Duluth who has spent nearly three decades building and remodeling across Northern Minnesota, and who is still on every site himself.
 - Dan Bruckelmyer started in construction in 1997. Nearly thirty years later, he's still doing the same thing he started with — building and renovating homes for people who live in Northern Minnesota, on the same ground he knows cold.
@@ -766,3 +766,305 @@ H1: Privacy Policy
 - Our site is served over HTTPS and form submissions are transmitted securely. We keep your information only as long as needed to serve you and meet our legal and business obligations.
 - You can ask us to access, correct, or delete the information you've shared, or to stop contacting you, at any time. Just reach out below.
 
+
+---
+
+## /faq — FAQ — Custom Home Building & Remodeling Questions | ProCon LLC
+
+Straight answers about building and remodeling in Northern Minnesota — timelines, costs, permits, materials, and how ProCon works. Asked by real homeowners, answered by the builder.
+
+H1: Ask the builder.
+
+- Everything homeowners ask before building or remodeling in Northern Minnesota — timelines, costs, permits, materials — answered plainly by the people doing the work. Don't see yours? Just ask.
+- Yes. ProCon LLC is a licensed Minnesota contractor (license #QB807406), is insured, and backs its work with a workmanship guarantee.
+- Yes. Dan Bruckelmyer is on site for the work, not relaying it through a crew you never met. ProCon is licensed in Minnesota under #QB807406 and insured, and every remodel is backed by a workmanship guarantee.
+- Every inquiry goes straight to Dan himself — no call center. He returns calls personally, usually from the job site, during open hours: Monday to Friday, 7:00am to 4:30pm.
+- Just the basics: what you'd like to build, the city it's in, and rough timing. Plans or photos help but aren't required to start.
+- Most single-family custom homes take eight to twelve months from footings to final walkthrough. Timing depends on size, site, and how quickly selections are made, but ProCon gives you a real schedule before the first shovel.
+- Q: Is ProCon licensed and insured?
+- Q: Is the owner actually on the job?
+- Q: Do you charge for estimates?
+- Q: How fast will I hear back?
+
+
+---
+
+## /process — How It Works — From First Call to Final Walkthrough | ProCon LLC
+
+The six steps of a ProCon project: first call, on-site walkthrough, free written estimate, plans & permits, owner-led build, and a final walkthrough backed by a workmanship guarantee.
+
+H1: No surprises. That's the process.
+
+- Handing someone your home for months takes trust. Here's exactly what happens between your first call and the day we hand it back — six steps, each one in writing, with the owner on the job the whole way.
+- You call or send the form. Dan picks up or calls back personally — no call center, no sales rep. You talk through what you want to build, roughly where, and what matters most to you. Five minutes is usually enough to know whether it's a fit.
+- Dan comes to the property. He looks at what you're starting with — grade, drainage, structure, sun, snow load, access — because in Northern Minnesota the lot writes half the plan. You'll get straight talk about what's possible and what it'll fight you on.
+- A real number, in writing, free. Scope spelled out line by line — what's included, what's allowance, what's excluded — so there are no soft numbers waiting to surprise you in month four.
+- Once you say go, we handle drawings, engineering where it's needed, and the permit file with your city or county. You sign off on the plan before anything is ordered.
+- One crew, owner on the job. We sequence the work, manage inspections, and keep you updated in plain language — photos and a call, not a portal you have to chase. Weather is planned for, not used as an excuse.
+
+
+---
+
+## /reviews — Reviews — What Homeowners Say | ProCon LLC, Duluth MN
+
+Real Google reviews from homeowners who built, added on, and remodeled with ProCon LLC across Duluth and Northern Minnesota.
+
+H1: The neighbors can tell you.
+
+- We could tell you we build well — but in a region this small, the work speaks through the people who live in it. These are real Google reviews from real ProCon projects.
+- Reviews load live from Google — enable JavaScript, or find us on Google: search “ProCon LLC Duluth MN”.
+
+
+---
+
+## /services/basement-finishing — Basement Finishing in Duluth, MN | ProCon LLC
+
+Basement finishing in Duluth, MN — family rooms, bedrooms, baths, and saunas built into the square footage you already own. Moisture handled first, ~$40k-$100k typical, 6-10 weeks. Free estimates.
+
+H1: The cheapest square footage you’ll ever add.
+
+- The foundation, the walls, and the roof over it already exist — you paid for them when you bought the house. ProCon finishes basements across Duluth and Northern Minnesota into family rooms, bedrooms, baths, and saunas, with moisture handled first, not patched later.
+- Most Duluth basements are doing one job: holding boxes. The same footprint can hold a family room, a guest bedroom with a real egress window, a full bathroom, a home office, a gym — or the sauna this region was built on. Here’s what a ProCon basement finish includes:
+- A straightforward family-room finish sits at the low end; adding a bedroom, full bath, and wet bar pushes toward the top. Written estimates are free.
+- And it’s the least disruptive remodel there is — the work stays downstairs while your household runs normally above it.
+- Most Duluth-area basement finishes land roughly between $40,000 and $100,000 in 2026 — a straightforward family room at the low end, a bedroom-bath-wet-bar layout toward the top. The written estimate is free.
+- It’s the first conversation, not an afterthought. Duluth basements sit in wet, freeze-thaw ground — we check drainage, grading, and water history before finishing anything, and build with the right vapor management so the space stays dry and healthy.
+- Q: How much does it cost to finish a basement in Duluth?
+- Q: What about moisture?
+- Q: Do I need an egress window for a basement bedroom?
+- Q: How long does it take?
+
+
+---
+
+## /services/sauna-construction — Sauna Builder in Duluth, MN | Custom Sauna Construction | ProCon LLC
+
+Custom sauna construction in Duluth, MN — indoor saunas built into bathrooms and basements, and freestanding backyard sauna buildings. Cedar interiors, proper venting, licensed MN builder. Free estimates.
+
+H1: Saunas, built the way this region expects.
+
+- Around here a sauna isn’t a luxury add-on — it’s heritage. ProCon builds custom saunas across Duluth and Northern Minnesota: indoor saunas worked into bathrooms and basements, and freestanding backyard sauna buildings with the walk through the snow included.
+- Indoor saunas get worked into a bathroom remodel, a basement, or an addition — steps from your shower, usable every day of the year with no boots required. They’re the more affordable route and the one we build most often alongside bathroom remodels.
+- Freestanding backyard saunas are the full Northern Minnesota experience — a small building of its own with a foundation, roof, and siding matched to your home, and nothing but cold air between the bench and the snowbank. They also keep the heat and moisture loads out of your house entirely.
+- An indoor sauna built into existing space typically starts in that range; a freestanding backyard building runs more — it’s a small building of its own. Written estimates are free.
+- A sauna pushes heat and steam at the structure around it every time you fire it. Vapor barrier, venting, and framing are builder work — the part a kit can’t do for you.
+- Yes — indoor saunas worked into bathrooms, basements, and additions, and freestanding backyard sauna buildings, across Duluth and Northern Minnesota. We build them the traditional way: proper venting, vapor barrier, cedar interiors, and a heater sized to the room.
+- Q: Do you build custom saunas in Duluth?
+- Q: What does a custom sauna cost?
+- Q: Indoor or backyard — which should I build?
+- Q: Electric or wood-fired heater?
+
+
+---
+
+## /areas/carlton-mn — Custom Homes & Remodeling in Carlton, MN | ProCon LLC
+
+Custom home construction, additions, and remodeling in Carlton, MN — the county seat at the edge of Jay Cooke State Park. Owner-led by Dan Bruckelmyer. Free written estimates.
+
+H1: The county seat, built on the river's rock.
+
+- Custom homes, additions, and remodeling in Carlton — a small county seat twenty-five minutes southwest of Duluth, where the St. Louis River cuts through tilted slate at Jay Cooke and the lots back up to some of the prettiest country in the region.
+- Carlton is the seat of Carlton County — a town of a few hundred households sitting right at the gateway to Jay Cooke State Park, where the St. Louis River tears through tilted slate bedrock on its way to the lake. That geology doesn't stay in the park. Lots around Carlton and Thomson can run from deep glacial soils to shallow rock within a block, so the dig you plan isn't always the dig you get.
+- We've built around that for years. Test the soils, walk the lot, and design the foundation for what's actually under it — then build a house insulated past Minnesota code minimums, because winter out here is the same winter as everywhere else we work. Small-town lots, river-country views, and a build done right the first time.
+- Around Carlton the bedrock that makes Jay Cooke spectacular sits closer to the surface than you'd guess, and it tilts. One lot digs like a sandbox; the neighbor's hits slate at four feet. If a builder prices a foundation without knowing which one you have, the surprise comes out of your budget mid-dig.
+- So we settle it up front — soils, depth to rock, and where the water table sits — and design the foundation to the lot instead of forcing a standard plan onto ground that won't take it. That's the difference between a quoted price and a real one.
+- Yes. Carlton, Thomson, and the surrounding townships are all in our regular service area — about twenty-five minutes southwest of our Duluth base, just past Esko on Highway 61 and I-35.
+- Q: Do you build in Carlton and Thomson?
+- Q: What should I know about building near Jay Cooke?
+- Q: Can you remodel older homes in Carlton?
+- Q: How fast can you get to a Carlton project?
+
+
+---
+
+## /areas/moose-lake-mn — Custom Homes, Cabins & Remodeling in Moose Lake, MN | ProCon LLC
+
+Custom home construction, cabins, and remodeling in Moose Lake, MN — lake-country builds 45 minutes down I-35 from Duluth. Owner-led by Dan Bruckelmyer. Free written estimates.
+
+H1: Lake country, down the interstate.
+
+- Custom homes, cabins, and remodeling in Moose Lake and the lake country around it — Moosehead, Island Lake, Sturgeon, and the small waters in between. Forty-five minutes down I-35 from our Duluth base, and worth every mile.
+- Moose Lake sits where I-35 meets the lake country of southern Carlton County — the agate capital, a state park on Moosehead Lake, and shorelines dotted with cabins that families have held for generations. More and more of those cabins are becoming year-round homes, and that conversion is real construction: insulation, foundations, heating systems, and water lines all built for a lakeshore winter instead of a summer weekend.
+- That's our kind of work. We convert seasonal places to four-season homes, build new lake homes and cabins from the footings up, and handle the additions and remodels that come when a place gets used more than it was built for. Shoreland rules, septic siting, and lake-lot drainage are part of the job here — and we know them.
+- A cabin built for July doesn't become a winter home with a space heater and good intentions. The crawl space, the water line depth, the envelope, the heat source — every one of them was designed for a building that gets shut down in October, and every one has to be rethought for a building that runs through January.
+- We do those conversions as one planned project instead of a string of patches: insulate and air-seal the shell, get the foundation and plumbing below frost or protected, and size the heating for the real load. Done that way, the cabin your family has always had becomes the home you actually live in.
+- Yes. Moose Lake is about forty-five minutes down I-35 from our Duluth base, and the lake country around it — Moosehead, Island Lake, Sturgeon Lake, Barnum — is part of our regular working range.
+- Q: Do you work as far south as Moose Lake?
+- Q: Can you convert our seasonal cabin to a year-round home?
+- Q: Do you handle shoreland and septic requirements?
+- Q: Do you build new homes in Moose Lake itself?
+
+
+---
+
+## /areas/silver-bay-mn — Custom Homes & Remodeling in Silver Bay, MN | ProCon LLC
+
+Custom home construction, lake homes, and remodeling in Silver Bay, MN — North Shore builds engineered to bedrock and Lake Superior weather. Owner-led by Dan Bruckelmyer. Free written estimates.
+
+H1: A planned town on an unplanned shore.
+
+- Custom homes, lake homes, and remodeling in Silver Bay and the Shore around it — Beaver Bay, Little Marais, and the lake lots between. An hour up Highway 61, where the rock is closer to the surface and the lake sets the weather.
+- Silver Bay was built almost all at once in the 1950s — a planned company town for the taconite plant, laid out on the ledge above the lake. That gives it a housing stock unlike anywhere else on the Shore: whole neighborhoods of same-era homes, sturdy but sixty-plus years old, most of them due for the additions, kitchens, windows, and envelope work that bring a mid-century house up to a modern winter.
+- Outside town it's classic North Shore building: bedrock at or near the surface, lake lots with direct Superior exposure, and seasonal places that need to survive being left through the winter. We engineer foundations to the rock, detail siding and flashing for the weather that comes off the open lake, and build new lake homes and cabins from Beaver Bay up past Little Marais.
+- A whole town built in the same decade ages in the same decade. Silver Bay's homes were solidly built, but their walls, windows, and insulation were designed for 1956 fuel prices — and a remodel that ignores the envelope just puts new finishes on an expensive-to-heat shell.
+- So when we open up a Silver Bay house for a kitchen, an addition, or new windows, we treat it as the chance to fix the assembly: air-seal, insulate past code minimums, and detail the exterior for lake weather. The house looks better and runs cheaper — that's the whole point of doing it once, properly.
+- Yes. Silver Bay is about an hour up Highway 61 from our Duluth base, past Two Harbors, and we work the Shore regularly — Beaver Bay, Silver Bay, and the lake lots up toward Little Marais.
+- Q: Do you travel as far as Silver Bay?
+- Q: Can you remodel Silver Bay's 1950s homes?
+- Q: Can you build on bedrock lots near Silver Bay?
+- Q: Do you build lake homes and cabins up here?
+
+
+---
+
+## /areas/superior-wi — Custom Homes & Remodeling in Superior, WI | ProCon LLC
+
+Custom home construction, additions, and remodeling in Superior, WI — minutes across the bridge from our Duluth base. Owner-led by Dan Bruckelmyer. Free written estimates.
+
+H1: Across the bridge, same standard of work.
+
+- Custom homes, additions, and remodeling in Superior — Billings Park, the East End, Allouez, and out toward the village. We're minutes away over the Bong Bridge, and we build for Superior's flat, clay-soil lots the same way we build everything: properly.
+- Superior sits at the head of the lake on the Wisconsin side, right across the harbor from Duluth — ten minutes over the Bong or Blatnik Bridge from our base. The ground is the opposite of Duluth's: flat, low, and heavy with red clay. That clay holds water, so drainage, grading, and how a foundation sheds moisture decide whether a build stays dry — it's not a place to copy a hillside detail and hope.
+- The wind is the other half. With the open harbor and the flats, Superior lots can take wind that Duluth's hillside neighborhoods never see. We detail the envelope and roof for that exposure, and we know the housing stock — Billings Park bungalows, East End four-squares, postwar ramblers out toward Allouez — well enough to make an addition or remodel look like it was always there.
+- Red clay doesn't drain — it holds. A footing or slab detailed for Duluth's rocky, fast-draining hillside will sit wet in Superior, and wet clay moves when it freezes. So the front end of a Superior build is about water: where the lot sends it, how the grading moves it away from the house, and how the foundation is drained and damp-proofed so frost has nothing to grab.
+- We plan that before anything is poured, not after the first spring thaw shows up in the basement. It's the kind of local knowledge you only get from building on both sides of the harbor.
+- Yes. Superior is part of our regular service area — we're about ten minutes away across the Bong or Blatnik Bridge from our Duluth base, and we build and remodel on the Wisconsin side of the harbor regularly.
+- Q: Do you work in Wisconsin?
+- Q: How is building in Superior different from Duluth?
+- Q: Can you remodel older Superior homes?
+- Q: What parts of Superior do you serve?
+
+
+---
+
+## /best-custom-home-builder-duluth — Best Custom Home Builder in Duluth, MN — How to Choose | ProCon LLC
+
+Searching for the best custom home builder near Duluth, MN? Use this 6-question checklist — license verification, red flags, realistic timelines — from a builder working Northern Minnesota since 1997.
+
+H1: How to choose the best custom home builder in Duluth.
+
+- You’re about to hand someone 8–12 months and the biggest check of your life. “Best” isn’t a slogan — it’s a checklist. Here’s exactly what to verify, what to ask, and what to walk away from, written by a builder who’s been on Northern Minnesota job sites since 1997.
+- Every builder’s website says “quality” and “trust.” Ignore the words and check the facts. These five take about twenty minutes and they remove most of the risk:
+- The right answer is a name, not a department. You want the decision-maker on your site, not three phone calls away.
+- In writing, before the work happens — not discovered on the final invoice. Low bidders often make their margin here.
+- Minnesota code is a minimum, and minimum shows up on January heating bills. ProCon insulates above code on every build.
+- 8–12 months for most custom homes here. A builder promising 5 is either guessing or planning to cut something you’ll live with.
+- Q: Who is the best custom home builder near me in Duluth, MN?
+- Q: How do I verify a Minnesota contractor’s license?
+- Q: What should a custom home estimate include?
+- Q: How long does it take to build a custom home in Duluth?
+
+
+---
+
+## /cost-to-build-a-custom-home-duluth-mn — Cost to Build a Custom Home in Duluth, MN (2026 Guide) | ProCon LLC
+
+What it costs to build a custom home in Duluth, MN in 2026: most land between $250-$500/sq ft. What drives the price, the winter factor, and how to keep a build on budget. Free written estimates.
+
+H1: What a custom home actually costs in Duluth.
+
+- Most builders won’t put a number on a website. We will: in 2026, most custom homes around Duluth land roughly between $250 and $500 per square foot, before land. Here’s where your project falls in that range — and what moves it.
+- These are planning ranges for the Duluth area in 2026, not quotes — land, site work, well/septic, and design all move them. A written estimate for your actual lot is free.
+- Straightforward footprint, quality standard finishes, insulation above code. A 2,000 sq ft home lands around $500k–$700k before land.
+- More complex rooflines, upgraded kitchens and baths, custom millwork, premium windows. The same 2,000 sq ft runs $700k–$1M.
+- Rock, slope, trees, driveway length, and well/septic vs. city utilities. The single most common budget surprise — and the reason we walk every lot before quoting.
+- A simple rectangle with a clean gable is the cheapest square footage you can buy. Every bump-out, dormer, and valley adds framing, roofing, and flashing.
+- Q: How much does it cost to build a custom home in Duluth, MN?
+- Q: Does that include the land?
+- Q: Is it cheaper to buy an existing home or build?
+- Q: Does building in winter cost more?
+
+
+---
+
+## /garage-cost-duluth — Garage Cost in Duluth, MN — 24×24 Two-Car Pricing (2026) | ProCon LLC
+
+What a detached garage costs in Duluth, MN in 2026: a standard 24×24 two-car typically runs ~$45k-$80k, slab through doors, matched to your home. What adds to the price. Free written estimates.
+
+H1: What a detached garage costs in Duluth.
+
+- The straight answer: in 2026, a standard 24×24 two-car detached garage around Duluth typically runs roughly $45,000–$80,000 built to match your home — slab through doors. Here’s what moves that number.
+- That range covers the whole job as one contract — no coordinating a concrete crew, a framer, and a door company yourself:
+- What pushes the number up: a third bay, heated shop space, a loft with stairs, extra-tall walls for a lift or RV door, and site work if the slab location needs real excavation. We size all of that into the design up front so the slab and framing are right from day one.
+- Slab through doors, roofed and sided to match your house. The exact number depends on doors, windows, and your site.
+- Once the slab is in. A straightforward two-car lands at the short end; a bigger building with a finished loft runs longer.
+- In 2026, a standard 24×24 two-car detached garage in the Duluth area typically runs roughly $45,000 to $80,000 built to match your home — slab, framing, roofing, siding, and doors included. Larger buildings, shop space, or a loft push it up from there. The written estimate is free.
+- Q: How much does a detached garage cost in Duluth, MN?
+- Q: What adds the most to the price?
+- Q: How long does it take?
+- Q: Do you handle the permit and the slab?
+
+
+---
+
+## /kitchen-remodel-cost-duluth — Kitchen Remodel Cost in Duluth, MN (2026 Guide) | ProCon LLC
+
+What a kitchen remodel costs in Duluth, MN in 2026: refresh ~$30k-$45k, full remodel ~$45k-$70k, down-to-the-studs ~$70k-$90k+. Where the money goes and how to stay on budget. Free written estimates.
+
+H1: What a kitchen remodel costs in Duluth.
+
+- In 2026, most Duluth-area kitchen remodels land roughly between $30,000 and $90,000, depending on how far you go. Here are the three tiers, where the money actually goes, and how to keep yours on budget.
+- Planning ranges for the Duluth area in 2026 — your kitchen’s size, layout, and finishes move them. The written estimate is free.
+- Cabinets stay, everything around them improves: counters, backsplash, sink and faucet, lighting, paint, hardware, maybe flooring. Biggest visual change per dollar.
+- New cabinets, counters, flooring, lighting, and appliances in the existing layout. The plumbing and wiring stay put — which is what keeps this tier out of the top one.
+- Walls move, the sink relocates, an island appears. Layout changes mean plumbing, electrical, and sometimes structure — the kitchen your house was never built with.
+- Kitchen budgets don’t blow up on cabinets — they blow up on surprises and drift. Three habits prevent both: a written, itemized estimate with allowances spelled out before demo day; a scope locked before the first cabinet is ordered; and change orders priced in writing before the work happens.
+- Q: How much does a kitchen remodel cost in Duluth, MN?
+- Q: What’s the most expensive part?
+- Q: How long does a kitchen remodel take?
+- Q: Can I live in the house during the remodel?
+
+
+---
+
+## /build-new-vs-remodel-duluth — Build New vs. Remodel — An Honest Comparison for Duluth | ProCon LLC
+
+Should you build a new custom home or remodel the one you own? A Duluth builder who does both lays out real costs, timelines, and the 50-60% crossover rule. Free estimates on both paths.
+
+H1: Build new, or remodel what you own?
+
+- It’s the most expensive either/or most families ever face — and most advice comes from someone who only sells one of the answers. ProCon does both, so here’s the honest comparison: costs, timelines, and the questions that actually decide it.
+- Remodel when the problem list is short and the bones are good. One dated kitchen, one cramped bath, a missing bedroom — those are remodels and additions, at a fraction of a new build’s cost, usually while you live at home.
+- Build new when the list is long and structural: the layout fights you, the systems are at end of life, the insulation belongs to another era, and the foundation has opinions. The honest crossover: when remodel scope approaches 50–60% of the home’s value, building what you actually want starts winning.
+- A kitchen runs 4–8 weeks ($30k–$90k+); a basement finish 6–10 weeks (~$40k–$100k); an addition 2–4 months. You live at home through nearly all of it.
+- Most Duluth-area builds land $250–$500/sq ft before land. Longer and costlier — and the only path to a home with nothing carried over.
+- Remodeling is almost always cheaper for a single problem. Building new wins when the problem list is long — layout, systems, insulation, and foundation all at once. The crossover is roughly when remodel scope approaches 50–60% of the home’s value.
+- Q: Is it cheaper to remodel or build new?
+- Q: When does remodeling stop making sense?
+- Q: How do the timelines compare?
+- Q: Can you price both options for my house?
+
+
+---
+
+## /cabin-builder-north-shore-mn — Cabin Builder — North Shore & Northern MN Lake Homes | ProCon LLC
+
+Cabin and lake home builder for the North Shore and Northern Minnesota lake country. Year-round and seasonal builds framed for Lake Superior weather, well and septic handled. Free site-walk estimates.
+
+H1: Cabins built for the shore, not in spite of it.
+
+- From Two Harbors up the North Shore and inland to lake country, ProCon builds cabins and lake homes that take what Superior gives — the wind, the freeze, the driven rain — and hold. Based in Duluth, so your builder is an hour away, not a state away.
+- It’s the first question we ask, because it changes everything downstream. A seasonal cabin can be built simpler and cost less — but in our experience, most owners eventually wish they’d gone four-season the first time. A year-round lake home needs full insulation, heat that holds through January, and water and septic designed not to freeze.
+- We build both, and we’ll tell you honestly which your plans actually call for. Either way, a ProCon lake build includes:
+- Lake and cabin builds run higher than in-town — the site work (rock, slope, septic, well, access) is the difference. The written estimate from a site walk is free and itemizes it all.
+- Like our in-town custom homes — with the foundation sequenced before the freeze, because Dan has built through nearly three decades of these winters.
+- Yes — from Two Harbors and Silver Bay up the shore, and inland to Grand Rapids and Moose Lake lake country. We’re based in Duluth, so your builder is an hour away, not a state away.
+- Q: Do you build cabins on the North Shore?
+- Q: What does a cabin or lake home cost to build?
+- Q: Seasonal or four-season — which should I build?
+- Q: What’s different about building near Lake Superior?
+
+
+---
+
+## /gallery/island-lake — Island Lake Custom Home — Modern Lake House Build near Duluth, MN | ProCon LLC
+
+A ProCon custom home project on Island Lake near Duluth, MN: a modern black board-and-batten house, attached garage, and wraparound thermally modified wood deck — built start to finish.
+
+H1: A modern home on the lake.
+
+- Black board-and-batten, an attached garage, vaulted wood ceilings, and a wraparound thermally modified wood deck — a complete ProCon custom home, built start to finish on Island Lake north of Duluth.
+- The Island Lake build is the kind of project ProCon is built for: a ground-up modern custom home on a wooded Northern Minnesota lakeside lot, taken from foundation through finish by one owner-led crew. Dark board-and-batten siding and a metal roof handle the climate; warm thermally modified wood softens the entry, soffits, and a deck that wraps the house toward the water.
+- Inside, vaulted tongue-and-groove ceilings and lake-facing glass open the great room, stairs, and bedrooms to the view. Every detail — from the mitered deck joinery to the recessed soffit lighting — was held to the same workmanship standard ProCon puts its name behind.
+- Tap any photo to view it full screen. Architectural photography by Capture Chaos Productions.
+- Want one like Island Lake? Tell us what you're planning — a custom home, a deck, or the whole property. Free estimates, straight to the owner.

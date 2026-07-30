@@ -40,7 +40,11 @@ Based in Duluth, MN 55804. Serves Duluth and Northern Minnesota.
 - Hibbing, MN: /areas/hibbing-mn
 - Grand Rapids, MN: /areas/grand-rapids-mn
 - Virginia, MN: /areas/virginia-mn
-- Also serving: Rice Lake, Lakewood Township, Arnold, Carlton, Fredenberg Township, and Grand Lake Township.
+- Carlton, MN: /areas/carlton-mn
+- Moose Lake, MN: /areas/moose-lake-mn
+- Silver Bay, MN: /areas/silver-bay-mn
+- Superior, WI: /areas/superior-wi
+- Also serving: Rice Lake, Lakewood Township, Arnold, Fredenberg Township, and Grand Lake Township.
 
 ## Gallery
 - Project gallery (custom homes, kitchens, baths, decks, garages, additions): /gallery

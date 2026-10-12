@@ -33,6 +33,10 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="preload" href="/assets/fonts/ClashDisplay-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp"
+        href="/assets/img/hero-custom-home-drone-duluth-mn-640.webp"
+        imagesrcset="/assets/img/hero-custom-home-drone-duluth-mn-640.webp 640w, /assets/img/hero-custom-home-drone-duluth-mn-960.webp 960w, /assets/img/hero-custom-home-drone-duluth-mn-1280.webp 1280w, /assets/img/hero-custom-home-drone-duluth-mn.webp 1920w"
+        imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260729a">
 
   <script type="application/ld+json">
@@ -147,7 +151,10 @@
       </div>
 
       <figure class="shero__media" data-reveal>
-        <img src="/assets/img/hero-custom-home-drone-duluth-mn.jpg" alt="Drone view of a modern custom home built by ProCon in Duluth, MN" width="1920" height="1071" loading="eager" fetchpriority="high" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="/assets/img/hero-custom-home-drone-duluth-mn-640.webp 640w, /assets/img/hero-custom-home-drone-duluth-mn-960.webp 960w, /assets/img/hero-custom-home-drone-duluth-mn-1280.webp 1280w, /assets/img/hero-custom-home-drone-duluth-mn.webp 1920w" sizes="100vw">
+          <img src="/assets/img/hero-custom-home-drone-duluth-mn.jpg" alt="Drone view of a modern custom home built by ProCon in Duluth, MN" loading="eager" decoding="async" width="1920" height="1071" fetchpriority="high">
+        </picture>
       </figure>
     </section>
 
@@ -172,8 +179,9 @@
         <div class="rel" data-reveal style="--rd:80ms;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
           <a class="rel__card" href="/services/custom-home-construction"><b>Custom Homes</b><span>&mdash;&gt;</span></a>
           <a class="rel__card" href="/services/home-additions"><b>Home Additions</b><span>&mdash;&gt;</span></a>
-          <a class="rel__card" href="/services/kitchen-remodeling"><b>Remodeling</b><span>&mdash;&gt;</span></a>
-          <a class="rel__card" href="/services/deck-construction"><b>Decks</b><span>&mdash;&gt;</span></a>
+          <a class="rel__card" href="/services/kitchen-remodeling"><b>Kitchen Remodeling</b><span>&mdash;&gt;</span></a>
+          <a class="rel__card" href="/services/bathroom-remodeling"><b>Bathroom Remodeling</b><span>&mdash;&gt;</span></a>
+          <a class="rel__card" href="/services/deck-construction"><b>Deck Builders</b><span>&mdash;&gt;</span></a>
           <a class="rel__card" href="/services/garages-outbuildings"><b>Garages</b><span>&mdash;&gt;</span></a>
         </div>
       </div>
@@ -313,6 +321,6 @@
   </div>
 
   <script src="/assets/js/lenis.min.js?v=20260610k" defer></script>
-  <script src="/assets/js/main.js?v=20260729a" defer></script>
+  <script src="/assets/js/main.js?v=20261012a" defer></script>
 </body>
 </html>

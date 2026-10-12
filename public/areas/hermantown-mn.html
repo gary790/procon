@@ -33,6 +33,10 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="preload" href="/assets/fonts/ClashDisplay-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp"
+        href="/assets/img/custom-home-winter-dusk-duluth-mn-640.webp"
+        imagesrcset="/assets/img/custom-home-winter-dusk-duluth-mn-640.webp 640w, /assets/img/custom-home-winter-dusk-duluth-mn-960.webp 960w, /assets/img/custom-home-winter-dusk-duluth-mn-1200.webp 1200w"
+        imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260729a">
 
   <script type="application/ld+json">
@@ -147,7 +151,10 @@
       </div>
 
       <figure class="shero__media" data-reveal>
-        <img src="/assets/img/custom-home-winter-dusk-duluth-mn.jpg" alt="Custom home at winter dusk near Hermantown, MN" width="1200" height="896" loading="eager" fetchpriority="high" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="/assets/img/custom-home-winter-dusk-duluth-mn-640.webp 640w, /assets/img/custom-home-winter-dusk-duluth-mn-960.webp 960w, /assets/img/custom-home-winter-dusk-duluth-mn-1200.webp 1200w" sizes="100vw">
+          <img src="/assets/img/custom-home-winter-dusk-duluth-mn.jpg" alt="Custom home at winter dusk near Hermantown, MN" loading="eager" decoding="async" width="1200" height="896" fetchpriority="high">
+        </picture>
       </figure>
     </section>
 
@@ -312,6 +319,6 @@
   </div>
 
   <script src="/assets/js/lenis.min.js?v=20260610k" defer></script>
-  <script src="/assets/js/main.js?v=20260729a" defer></script>
+  <script src="/assets/js/main.js?v=20261012a" defer></script>
 </body>
 </html>

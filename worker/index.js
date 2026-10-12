@@ -301,11 +301,59 @@ async function handleContact(request, env) {
     return json({ success: false, message: 'We could not send your request. Please call us at (218) 348-2076.' }, 502);
   }
 
+  // Server-side lead count — the one number that can't be faked by a client.
+  writeEvent(env, request, { e: 'lead', p: '/contact', r: request.headers.get('referer') || '', l: project });
+
   const first = (name.split(/\s+/)[0] || name);
   const confHtml = buildConfirmationEmail({ first, project, city });
   try { await send({ from: FROM, to: [email], subject: `Your estimate request is in, ${first} — ProCon LLC`, html: confHtml }); } catch (_) {}
 
   return json({ success: true });
+}
+
+/* ---- First-party analytics (Workers Analytics Engine) ----
+   POST /api/event  { e, p, r, l, w, q }  — written to the EVENTS dataset
+   (binding in wrangler.jsonc → dataset "procon_events"). No cookies, no IPs,
+   no PII stored: just event name, page path, referrer host, UTM source,
+   device class and country. Query with the Analytics Engine SQL API — see
+   docs/ANALYTICS.md. The weekly health report reads it from there. */
+const EVENT_NAMES = new Set(['pageview', 'phone_click', 'email_click', 'estimate_cta_click', 'form_submit']);
+
+function deviceClass(w) {
+  const n = Number(w) || 0;
+  return n === 0 ? 'unknown' : n < 768 ? 'mobile' : n < 1100 ? 'tablet' : 'desktop';
+}
+
+function utmSource(q) {
+  try { return (new URLSearchParams(String(q || '')).get('utm_source') || '').slice(0, 60); } catch { return ''; }
+}
+
+function refHost(r) {
+  try { return r ? new URL(String(r)).hostname.replace(/^www\./, '').slice(0, 100) : ''; } catch { return ''; }
+}
+
+function writeEvent(env, request, { e, p = '', r = '', l = '', w = 0, q = '' }) {
+  if (!env.EVENTS || typeof env.EVENTS.writeDataPoint !== 'function') return;
+  const path = String(p).split('?')[0].slice(0, 200);
+  const country = request.headers.get('cf-ipcountry') || '';
+  try {
+    env.EVENTS.writeDataPoint({
+      // blob1 event · blob2 path · blob3 referrer host · blob4 utm_source · blob5 device · blob6 country · blob7 label
+      blobs: [e, path, refHost(r), utmSource(q), deviceClass(w), country, String(l).slice(0, 100)],
+      doubles: [1],
+      indexes: [e],
+    });
+  } catch (err) {
+    console.error('analytics write failed', err);
+  }
+}
+
+async function handleEvent(request, env) {
+  let d;
+  try { d = await request.json(); } catch { return new Response(null, { status: 400 }); }
+  if (!d || typeof d !== 'object' || !EVENT_NAMES.has(d.e)) return new Response(null, { status: 400 });
+  writeEvent(env, request, d);
+  return new Response(null, { status: 204, headers: { 'cache-control': 'no-store' } });
 }
 
 /* ---- Google reviews (Places API) ----
@@ -374,6 +422,11 @@ export default {
     if (url.pathname === '/api/contact') {
       return request.method === 'POST'
         ? handleContact(request, env)
+        : json({ success: false, message: 'Method not allowed.' }, 405);
+    }
+    if (url.pathname === '/api/event') {
+      return request.method === 'POST'
+        ? handleEvent(request, env)
         : json({ success: false, message: 'Method not allowed.' }, 405);
     }
     if (url.pathname === '/api/reviews') {

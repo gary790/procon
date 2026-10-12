@@ -120,9 +120,27 @@
   var addr = 'info' + '@' + 'proconmn.com';
   document.querySelectorAll('a[data-show]').forEach(function (em) { em.href = 'mailto:' + addr; em.textContent = addr; });
 
-  /* ---- Conversion events (no-op until GA4 id wired) ---- */
-  function track(n, p) { if (typeof window.gtag === 'function') window.gtag('event', n, p || {}); }
-  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) { a.addEventListener('click', function () { track('phone_click', { phone: a.getAttribute('href') }); }); });
+  /* ---- First-party analytics (no cookies, no PII) ----
+     Every event is POSTed to /api/event on our own Worker, which writes it to
+     Cloudflare Workers Analytics Engine (dataset procon_events). GA4 is still
+     mirrored if a gtag() ever gets added. See docs/ANALYTICS.md. */
+  function track(n, p) {
+    p = p || {};
+    if (typeof window.gtag === 'function') window.gtag('event', n, p);
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+    try {
+      var body = JSON.stringify({
+        e: n, p: location.pathname, r: document.referrer || '', l: p.label || '',
+        w: window.innerWidth, q: location.search.slice(0, 200)
+      });
+      if (navigator.sendBeacon) navigator.sendBeacon('/api/event', new Blob([body], { type: 'application/json' }));
+      else fetch('/api/event', { method: 'POST', body: body, headers: { 'content-type': 'application/json' }, keepalive: true });
+    } catch (_) {}
+  }
+  track('pageview');
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) { a.addEventListener('click', function () { track('phone_click', { label: a.getAttribute('href') }); }); });
+  document.querySelectorAll('a[href^="mailto:"],a[data-show]').forEach(function (a) { a.addEventListener('click', function () { track('email_click'); }); });
+  document.querySelectorAll('a[href="/contact"],a[href^="/contact?"],a[href="/contact#estimate"]').forEach(function (a) { a.addEventListener('click', function () { track('estimate_cta_click', { label: (a.textContent || '').trim().slice(0, 60) }); }); });
 
   /* ---- Estimate form: validation, honeypot, async submit, success state ---- */
   var form = document.getElementById('estimate-form');

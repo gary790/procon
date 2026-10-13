@@ -33,6 +33,10 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="preload" href="/assets/fonts/ClashDisplay-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp"
+        href="/assets/img/craftsman-hands-timber-framing-640.webp"
+        imagesrcset="/assets/img/craftsman-hands-timber-framing-640.webp 640w, /assets/img/craftsman-hands-timber-framing-960.webp 960w, /assets/img/craftsman-hands-timber-framing-1200.webp 1200w"
+        imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260729a">
 
   <script type="application/ld+json">
@@ -128,7 +132,10 @@
         <p class="lead measure" data-reveal style="color:var(--mist);--rd:120ms">ProCon is Dan Bruckelmyer — a family-operated custom home builder in Duluth who has spent nearly three decades building and remodeling across Northern Minnesota, and who is still on every site himself.</p>
       </div>
       <figure class="shero__media" data-reveal>
-        <img src="/assets/img/craftsman-hands-timber-framing.jpg" alt="A carpenter's hands fitting a timber joint on a ProCon job site" width="1200" height="896" loading="eager" fetchpriority="high" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="/assets/img/craftsman-hands-timber-framing-640.webp 640w, /assets/img/craftsman-hands-timber-framing-960.webp 960w, /assets/img/craftsman-hands-timber-framing-1200.webp 1200w" sizes="100vw">
+          <img src="/assets/img/craftsman-hands-timber-framing.jpg" alt="A carpenter's hands fitting a timber joint on a ProCon job site" loading="eager" decoding="async" width="1200" height="896" fetchpriority="high">
+        </picture>
       </figure>
     </section>
 
@@ -137,7 +144,7 @@
       <div class="wrap">
         <div class="edsplit edsplit--rev">
           <figure class="edsplit__media" data-reveal>
-            <img src="/assets/img/thermally-modified-wood-grain-detail.jpg" alt="Close detail of thermally modified wood grain — the decking material ProCon builds with" width="1200" height="896" loading="lazy" decoding="async">
+            <picture><source type="image/webp" srcset="/assets/img/thermally-modified-wood-grain-detail-640.webp 640w, /assets/img/thermally-modified-wood-grain-detail-960.webp 960w, /assets/img/thermally-modified-wood-grain-detail-1200.webp 1200w" sizes="100vw"><img src="/assets/img/thermally-modified-wood-grain-detail.jpg" alt="Close detail of thermally modified wood grain — the decking material ProCon builds with" width="1200" height="896" loading="lazy" decoding="async"></picture>
             <figcaption>Arbor Wood Co. thermally modified wood &mdash; the ProCon deck standard</figcaption>
           </figure>
           <div>
@@ -155,7 +162,7 @@
 
     <!-- IMAGE BREAK -->
     <div class="imgbreak" aria-hidden="true">
-      <img src="/assets/img/north-shore-lake-superior-aerial.jpg" alt="" width="1920" height="1071" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="/assets/img/north-shore-lake-superior-aerial-640.webp 640w, /assets/img/north-shore-lake-superior-aerial-960.webp 960w, /assets/img/north-shore-lake-superior-aerial-1280.webp 1280w, /assets/img/north-shore-lake-superior-aerial-1920.webp 1920w" sizes="100vw"><img src="/assets/img/north-shore-lake-superior-aerial.jpg" alt="" width="1920" height="1071" loading="lazy" decoding="async"></picture>
       <p class="imgbreak__cap">Home ground &middot; the North Shore</p>
     </div>
 
@@ -276,6 +283,6 @@
   </div>
 
   <script src="/assets/js/lenis.min.js?v=20260610k" defer></script>
-  <script src="/assets/js/main.js?v=20260729a" defer></script>
+  <script src="/assets/js/main.js?v=20261012a" defer></script>
 </body>
 </html>

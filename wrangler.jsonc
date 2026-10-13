@@ -10,6 +10,12 @@
     { "pattern": "www.proconmn.com", "custom_domain": true },
     { "pattern": "proconmn.com", "custom_domain": true }
   ],
+  // First-party analytics: /api/event and the contact handler write to this
+  // Analytics Engine dataset (pageviews, phone taps, estimate CTA clicks, leads).
+  // Query it with the SQL API — see docs/ANALYTICS.md.
+  "analytics_engine_datasets": [
+    { "binding": "EVENTS", "dataset": "procon_events" }
+  ],
   "assets": {
     "directory": "public",
     "binding": "ASSETS",

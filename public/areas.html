@@ -33,6 +33,10 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="preload" href="/assets/fonts/ClashDisplay-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp"
+        href="/assets/img/north-shore-lake-superior-aerial-640.webp"
+        imagesrcset="/assets/img/north-shore-lake-superior-aerial-640.webp 640w, /assets/img/north-shore-lake-superior-aerial-960.webp 960w, /assets/img/north-shore-lake-superior-aerial-1280.webp 1280w, /assets/img/north-shore-lake-superior-aerial-1920.webp 1920w"
+        imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260729a">
 
   <script type="application/ld+json">
@@ -143,7 +147,10 @@
         </div>
       </div>
       <figure class="shero__media" data-reveal>
-        <img src="/assets/img/north-shore-lake-superior-aerial.jpg" alt="Aerial view of the North Shore of Lake Superior near Duluth, Minnesota" width="1920" height="1071" loading="eager" fetchpriority="high" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="/assets/img/north-shore-lake-superior-aerial-640.webp 640w, /assets/img/north-shore-lake-superior-aerial-960.webp 960w, /assets/img/north-shore-lake-superior-aerial-1280.webp 1280w, /assets/img/north-shore-lake-superior-aerial-1920.webp 1920w" sizes="100vw">
+          <img src="/assets/img/north-shore-lake-superior-aerial.jpg" alt="Aerial view of the North Shore of Lake Superior near Duluth, Minnesota" loading="eager" decoding="async" width="1920" height="1071" fetchpriority="high">
+        </picture>
       </figure>
     </section>
 
@@ -266,6 +273,6 @@
   </div>
 
   <script src="/assets/js/lenis.min.js?v=20260610k" defer></script>
-  <script src="/assets/js/main.js?v=20260729a" defer></script>
+  <script src="/assets/js/main.js?v=20261012a" defer></script>
 </body>
 </html>
